@@ -1,0 +1,97 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // CSS - Bootstrap
+  style
+    include styles.css
+    include ../Bootstrap/css/bootstrap.min.css
+  script
+    include ../Bootstrap/js/bootstrap.min.js
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Cabin&display=swap' rel='stylesheet')
+  // Fonts Awesome
+  script(src='https://kit.fontawesome.com/15343104b5.js' crossorigin='anonymous')
+  title Cheese English - Free Learning English Website
+div
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top.custom-nav
+    div
+      img(width='140' ,='' height='30' src='./img/Cheese English Logo.png' alt='')
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarMenu' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarMenu.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item.active.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#')
+            | Home 
+            span.sr-only (current)
+        li.nav-item.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#') Features
+        li.nav-item.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#') Pricing
+      .sign-btn.mr-3
+        a(href='#') Sign in
+.container.mt-5
+  .circle
+  .circle2
+  section.page1.row.justify-content-between
+    .col-lg-6.col-sm-12
+      img.img-fluid(src='../img/undraw_annotation_7das.svg' alt='Responsive image')
+    .col-lg-5.mt-5.col-sm-12
+      .introduce-text.mb-5
+        h2.font-weight-bold Cheese English - Ez like a Cheese
+      .infor-p
+        p.text-left
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          | Adipisci culpa excepturi alias error in? Labore consectetur molestias enim. Nihil a eum perferendis eligendi
+          | veritatis recusandae maiores nemo obcaecati asperiores voluptas!
+  section.page1.row.justify-content-between
+    .col-lg-5.col-sm-12.mt-5.align-self-end
+      .introduce-text.mb-5
+        h2.font-weight-bold Cheese English - Ez like a Cheese
+      .infor-p
+        p.text-right
+          | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          | Adipisci culpa excepturi alias error in? Labore consectetur molestias enim. Nihil a eum perferendis eligendi
+          | veritatis recusandae maiores nemo obcaecati asperiores voluptas!
+    .col-lg-6.col-sm-12
+      img.img-fluid(src='../img/undraw_by_the_road_4rfk.svg' alt='Responsive image')
+  .text.d-flex.justify-content-center
+    h1.font-weight-bold(style='color:#FFCF1F') Join With Us
+  section.page1.row.justify-content-between
+    .col-lg-5.col-sm-12.mt-5
+      .row.d-flex.justify-content-center.mb-3
+        img(src='../img/Cheese English Logo.png' width='200' height='40' alt='Responsive image')
+      .row.d-flex.justify-content-center
+        .form-layout.p-3
+          form.p-3
+            .form-group.mt-3
+              label(for='exampleInputName') Name
+              input#exampleInputName.form-control(type='text' placeholder='Your Name')
+            .form-group.mt-3
+              label(for='exampleInputEmail1') Email address
+              input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+              small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+            .form-group.mt-3
+              label(for='exampleInputPassword1') Password
+              input#exampleInputPassword1.form-control(type='password' placeholder='Password')
+            .form-check.mt-3
+              input#exampleCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='exampleCheck1') Check me out
+            button.btn.mt-3(type='submit') Submit
+    .col-lg-6.col-sm-12.mt-5
+      img.img-fluid(src='../img/undraw_collaborating_g8k8.svg' alt='Responsive image')
+.footer.d-flex.align-items-center
+  .wrap.d-flex.justify-content-between.align-items-center.pl-5.pr-5
+    .des
+      p
+        | Make with &#x1F49B;&#x1F49B;&#x1F49B; \(&#xFFE3;&#xFE36;&#xFFE3;*\)) &amp; 
+        i.fab.fa-btc
+        |  Bootstrap 4 --- Design by 
+        a(href='https://www.facebook.com/Ken.deep.try.20')  me
+    .des
+      p &copy; Hutech, Inc.
+footer
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')

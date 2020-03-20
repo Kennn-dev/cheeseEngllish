@@ -1,0 +1,22 @@
+extends ../layouts/common
+block content
+    .container
+        h1(style='color: #FFCF1F' class='mt-5') Register Form
+        if errors
+            each error in errors
+                .alert.alert-danger=error
+        form(method="POST",action='/users/register')
+            .form-group
+                label(for='userName') User name
+                input#userName.form-control(name="name" type='text' ,value = values ? values.name : '', placeholder='Enter your user name' required)
+            .form-group
+                label(for='userEmail') Email address
+                input#userEmail.form-control(name="email",type='email' ,value = values ? values.email : '',placeholder='Enter email' required)
+                small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+            .form-group
+                label(for='userPassword') Password
+                input#userPassword.form-control(name="password",type='password' placeholder='Password' required)
+            .form-group
+                label(for='userPassword2') Password Confirm
+                input#userPassword2.form-control(name="passwordConfirm",type='password' placeholder='Password Confirm' required)
+            button.btn.btn-primary(type='submit') Register

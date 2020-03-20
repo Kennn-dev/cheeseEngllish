@@ -1,0 +1,15 @@
+extends ../../layouts/common-admin
+block content
+    .container
+        h1.mt-5 View User
+        form(method='POST')
+            .form-group
+                label(for='exampleInputName') Name
+                input#exampleInputName.form-control(type='text' name='name' value=user.name)
+            .form-group
+                label(for='exampleInputEmail') Email
+                input#exampleInputEmail.form-control(type='email' name='email' value=user.email)
+            button.btn.btn-primary.mr-3(type='submit') Update
+block footer
+    script
+            include ../../public/main.js

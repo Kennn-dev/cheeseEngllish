@@ -1,0 +1,65 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // CSS - Bootstrap
+  link(href="styles.css")
+  style
+    include ../public/styles.css
+    include ../Bootstrap/css/bootstrap.min.css
+  script
+    include ../Bootstrap/js/bootstrap.min.js
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Cabin&display=swap' rel='stylesheet')
+  // Fonts Awesome
+  script(src='https://kit.fontawesome.com/15343104b5.js' crossorigin='anonymous')
+  title Cheese English - Login
+#fb-root
+script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0')
+div
+  nav.navbar.navbar-expand-lg.navbar-light.fixed-top.custom-nav#navbar
+    div
+      img(width='140' ,='' height='30' src='../img/Cheese English Logo.png' alt='')
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarMenu' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarMenu.collapse.navbar-collapse
+      ul.navbar-nav.ml-auto
+        li.nav-item.active.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#')
+            | Home 
+            span.sr-only (current)
+        li.nav-item.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#') Features
+        li.nav-item.mr-3.d-flex.justify-content-center
+          a.nav-link(href='#') Pricing
+      .sign-btn.mr-3
+        a(href='#') Sign in
+.container-fluid.mt-5
+  section.page1.row.justify-content-between
+    .col-lg-6.col-sm-12
+    .col-lg-6.col-sm-12
+      .row.ml-5
+        .form-layout.p-3(style='background-color: #e5e5e547')
+          form.pt-5.pb-5.pl-3.pr-3(method="POST", action='login')
+            if(errors)
+                each error in errors
+                  .alert.alert-danger= error
+            .form-group
+              h1.h1-form.font-weight-bold(style='color: #FFCF1F') #{title}
+            .form-group.mt-3
+              label(for='exampleInputEmail') Email  :
+              input#exampleInputEmail.form-control(type='email',value = values? values.email:'', required name='email')
+            .form-group.mt-3
+              label(for='exampleInputPassword1') Password  :
+              input#exampleInputPassword1.form-control(type='password', required name='password')
+            .form-group.mt-3
+              button.btn.rounded-lg.mt-3(type='submit') Submit
+            .form-group.mt-3.rounded-lg
+              .fb-login-button(data-width='' data-size='large' data-button-type='login_with' data-layout='default' data-auto-logout-link='false' data-use-continue-as='false')
+            .d-flex.justify-content-center
+              a(href='/users/register') Register now !!!
+footer
+  script(src='../public/main.js')
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')

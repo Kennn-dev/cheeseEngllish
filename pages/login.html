@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS - Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../Bootstrap/js/bootstrap.min.js">
+        <!-- Google Fonts  -->
+        <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
+        <!-- Fonts Awesome -->
+        <script src="https://kit.fontawesome.com/15343104b5.js" crossorigin="anonymous"></script>
+        <title>Cheese English - Login</title>
+    </head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0"></script>
+    <div >
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-nav">
+            <div >
+                <img width="140", height="30" src="../img/Cheese English Logo.png" alt="">
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarMenu" aria-controls="navbarText" 
+            aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item active mr-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item mr-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item mr-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <div class="sign-btn mr-3">
+                    <a href="#" class="">Sign in</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid mt-5">
+        <section class="page1 row justify-content-between">
+            <div class="col-lg-6 col-sm-12">
+                
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="row ml-5    ">
+                    <div class="form-layout p-3" style="background-color: #e5e5e547">
+                        <form class="pt-5 pb-5 pl-3 pr-3">
+                            <div class="form-group ">
+                                <h1 class="h1-form font-weight-bold" style="color: #FFCF1F">Login</h1>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label  for="exampleInputName">User name  :</label>
+                                <input type="text" class="form-control" id="exampleInputName"  name="name">
+                              </div>
+                            <div class="form-group mt-3">
+                              <label for="exampleInputPassword1">Password  :</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn rounded-lg mt-3">Submit</button>
+                            </div>
+                            <div class="form-group mt-3 rounded-lg">
+                                <div class="fb-login-button" data-width="" data-size="large" 
+                                data-button-type="login_with" data-layout="default" data-auto-logout-link="false" 
+                                data-use-continue-as="false"></div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="">Register now !!!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</footer>
+</body>
+</html>

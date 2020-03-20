@@ -1,0 +1,22 @@
+extends ../../layouts/common-admin
+block content
+    .container
+        for msg in messages
+            .msg
+        h1(class='mt-5' style='color: #FFCF1F') User list 
+        table.table
+            thead.thead-dark
+                tr
+                th(scope='col') Name
+                th(scope='col') Email
+                th(scope='col') Actions
+            each user in users
+                tbody
+                tr
+                th(scope='row')= user.name
+                td=user.email
+                td
+                    a(href="./viewUser/"+user.id).mr-3.btn.btn-primary View
+                    a.btn.btn-danger.text-white.btn-del(href=`./deleteUser/${user._id}`,data-id=user._id) Delete
+
+            

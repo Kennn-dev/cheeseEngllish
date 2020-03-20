@@ -1,0 +1,119 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // CSS - Bootstrap
+  style
+    include ../public/styles.css
+    include ../Bootstrap/css/bootstrap.min.css
+  script
+    include ../Bootstrap/js/bootstrap.min.js
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Cabin&display=swap' rel='stylesheet')
+  // Fonts Awesome
+  script(src='https://kit.fontawesome.com/15343104b5.js' crossorigin='anonymous')
+  title Cheese English - Profile
+  // Title with User name
+div
+  nav#navbar.navbar.navbar-expand-lg.navbar-light.fixed-top.custom-nav
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarMenu' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarMenu.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto.align-items-center
+        li.nav-item.mt-2.mr-3.ml-3.d-flex.justify-content-center
+          .user-info
+            img.avatar.ml-2(src='../img/avatar-png-1.png' alt='')
+            p.mt-2 #{user.name}
+        li.nav-item.active.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='#')
+            | Profile 
+            span.sr-only (current)
+        li.nav-item.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='#') Lessons
+        li.nav-item.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='#') Pricing
+        .nav-item.mr-3.ml-3.d-flex.justify-content-center
+          .input-group.align-items-center
+            input#exampleInputName.form-control(type='text' placeholder='Translate here ...' name='search')
+            i.fas.fa-search.fa-lg(aria-hidden='true')
+    .mt-3.mb-3.mr-3.logo
+      img(width='200' ,='' height='40' src='../img/Cheese English Logo.png' alt='')
+.container-fluid.mt-3
+  section.page1.row.justify-content-between
+    .col-lg-6.col-sm-12
+      .mt-5.profile.p-5
+        .title.d-flex.justify-content-center
+          h3.mt-3.text-uppercase.font-bold Your Profile
+        form
+          .form-group
+            label(for='exampleInputEmail1') Name :
+            .row
+              .col
+                input.form-control(type='text' placeholder='First name' value=user.name)
+              .col
+                input.form-control(type='text' placeholder='Last name')
+          .form-group.mt-3
+            label(for='exampleInputAddress') Address :
+            input#exampleInputAddress.form-control(type='text' placeholder='')
+            small.form-text.text-muted Street Address
+          .form-group.mt-3
+            label(for='exampleInputAddress') Birthday :
+            .row
+              .col
+                input.form-control(type='text')
+                small.form-text.text-muted Day
+              h2 /
+              .col
+                select#exampleFormControlSelect1.form-control
+                  option 1
+                  option 2
+                  option 3
+                  option 4
+                  option 5
+                  option 6
+                  option 7
+                  option 8
+                  option 9
+                  option 10
+                  option 11
+                  option 12
+                small.form-text.text-muted Month
+              h2 /
+              .col
+                input.form-control(type='text')
+                small.form-text.text-muted Year
+          .form-group.mt-3
+            label(for='exampleInputEmail1') Email address
+            input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' value=user.email placeholder='Enter email')
+          .form-group.mt-3
+            label(for='exampleInputPhone') Phone Number
+            input#exampleInputPhone.form-control(type='number' placeholder='Enter phone')
+          .form-check
+            input#exampleCheck1.form-check-input(type='checkbox')
+            label.form-check-label(for='exampleCheck1') Check me out
+          button.btn.btn-primary.mt-3(type='submit') Save
+    .col-lg-6.col-sm-12.d-flex.justify-content-center
+      .mt-5.profile-2.p-5
+        .row.d-flex.justify-content-center
+          .avatar-main
+            img.img-fluid(src='../img/avatar-png-1.png' alt='')
+        .mt-3
+          .row.justify-content-center
+            h3.mt-3.text-uppercase.font-bold #{user.name}
+          .row.justify-content-center
+            a.sign-btn.text-muted(href='#' data-toggle='tooltip' data-placement='bottom' title='Level') Beginner
+        .row.d-flex.justify-content-center.mt-3
+          form
+            .form-group
+              .row.d-flex.justify-content-center
+                label(for='exampleFormControlFile1') Thay &dstrok;&#x1ED5;i &#x1EA2;nh &dstrok;&#x1EA1;i di&#x1EC7;n
+              .row.d-flex.justify-content-center
+                input#exampleFormControlFile1.form-control-file(type='file')
+        button.btn.out-btn.mt-5 Log out
+footer
+  script(src='../public/main.js')
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS - Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../Bootstrap/js/bootstrap.min.js">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Google Fonts  -->
+        <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
+        <!-- Fonts Awesome -->
+        <script src="https://kit.fontawesome.com/15343104b5.js" crossorigin="anonymous"></script>
+        <title>Cheese English - Profile</title>
+        <!-- Title with User name -->
+    </head>
+<body>
+    <div >
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top custom-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarMenu" aria-controls="navbarText" 
+            aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item mt-2 mr-3 ml-3 d-flex justify-content-center  ">
+                        <div class="user-info">
+                            <img src="../img/avatar-png-1.png" class="avatar ml-2" alt="">
+                            <p class="mt-2">User Name</p>
+                        </div>
+                      </li>
+                    <li class="nav-item active mr-3 ml-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item mr-3 ml-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Lessons</a>
+                    </li>
+                    <li class="nav-item mr-3 ml-3 d-flex justify-content-center">
+                      <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <div class="nav-item mr-3 ml-3 d-flex justify-content-center">
+                        <div class="input-group align-items-center">
+                            <input type="text" class="form-control" id="exampleInputName" placeholder="Translate here ..."  name="search">
+                            <i class="fas fa-search fa-lg" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="mt-3 mb-3 mr-3 logo">
+                <img width="200", height="40" src="../img/Cheese English Logo.png" alt="">
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid mt-3">
+        <section class="page1 row justify-content-between">
+            <div class=" col-lg-6 col-sm-12">
+                <div class="mt-5 profile p-5">
+                    <div class="title d-flex justify-content-center">
+                        <h3 class="mt-3 text-uppercase font-bold">Your Profile</h3>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label class="" for="exampleInputEmail1">Name :</label>
+                            <div class="row">
+                                <div class="col">
+                                <input type="text" class="form-control" placeholder="First name">
+                                </div>
+                                <div class="col">
+                                <input type="text" class="form-control" placeholder="Last name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputAddress">Address :</label>
+                            <input type="text" class="form-control" id="exampleInputAddress"  placeholder="">
+                            <small  class="form-text text-muted">Street Address</small>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputAddress">Birthday :</label>
+                            <div class="row ">
+                                <div class="col">
+                                    <input type="text" class="form-control" >
+                                    <small  class="form-text text-muted">Day</small>
+                                </div>
+                                <h2>/</h2>
+                                <div class="col">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>
+                                      <option>11</option>
+                                      <option>12</option>
+                                    </select>
+                                    <small  class="form-text text-muted">Month</small>
+                                </div>
+                                <h2>/</h2>
+                                <div class="col">
+                                    <input type="text" class="form-control" >
+                                    <small  class="form-text text-muted">Year</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPhone">Phone Number</label>
+                            <input type="number" class="form-control" id="exampleInputPhone" placeholder="Enter phone">
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Save</button>
+                      </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-center">
+                <div class="mt-5 profile-2 p-5 ">
+                    <div class="row d-flex justify-content-center">
+                        <div class="avatar-main">
+                            <img src="../img/avatar-png-1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class=" mt-3">
+                        <div class="row justify-content-center">
+                            <h3 class="mt-3 text-uppercase font-bold">User name</h3>
+                        </div>
+                        <div class="row justify-content-center">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Level" class="sign-btn text-muted">Beginner</a>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center mt-3">
+                        <form>
+                            <div class="form-group ">
+                              <div class="row d-flex justify-content-center">
+                                <label for="exampleFormControlFile1">Thay đổi Ảnh đại diện</label>
+                              </div>
+                              <div class="row d-flex justify-content-center">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button  class="btn out-btn mt-5">Log out</button>
+                </div>
+            </div>
+        </section>
+    </div>
+<footer>
+    <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</footer>
+</body>
+</html>
