@@ -10,4 +10,12 @@ router.post('/viewUser/:id',controller.updateUser);
 //Delete
 router.get('/deleteUser/:id',controller.deleteUser);
 
+
+//get all Lesson
+router.get('/lessons',controller.getLesson);
+//get/view 1 Lesson
+router.get('/viewLesson/:id',controller.viewLesson);
+//new Lesson
+router.get('/newLesson',controller.newLesson);
+router.post('/newLesson',controller.postNewLesson);
 module.exports = router;

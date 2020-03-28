@@ -1,0 +1,24 @@
+extends ../../layouts/common-admin
+block content
+    .container
+        h1(class='mt-5' style='color: #FFCF1F') Lesson list 
+        a(class='btn btn-warning' href='/admin/newLesson') New Lesson
+        table.table.mt-3
+            thead.thead-dark
+                tr
+                th(scope='col') Name
+                th(scope='col') Video Id
+                th(scope='col') Level
+                th(scope='col') Description
+            each lesson in lessons
+                tbody
+                tr
+                th(scope='row')=lesson.name
+                td
+                    a(href='https://vimeo.com/'+lesson.videoId target="_blank")=lesson.videoId
+                th(scope='row')=lesson.level
+                td
+                    a(href="./viewLesson/"+lesson._id).mr-3.btn.btn-primary View
+                    a.btn.btn-danger.text-white.btn-del(href=`${lesson._id}` ,data-id=lessons._id) Delete
+
+            

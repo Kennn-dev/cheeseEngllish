@@ -120,6 +120,7 @@ body{
 }
 .input-group input:focus, select:focus, textarea:focus, button:focus{
     outline: none;
+    box-shadow:none;
 }
 .input-group{
     border: 1px solid #ffcf1f ;
@@ -148,4 +149,49 @@ body{
 .out-btn{
     background-color: #ffcf1f !important ;
     width: 100%;
+}
+
+/* Lesson page */
+.list-lesson{
+    height: 100%;
+    background-color: #f8f9fa6e;
+    width: 100%;
+    border-radius: 15px;
+    padding: 20px 20px;
+}
+.lesson-tag{
+    
+    border-radius: 20px;
+    height: 100px ;
+    background-color: #6c757d1c ;
+}
+.pag .page-item .page-link{
+    color: #333;
+    border: 1px solid #FFCF1F;
+}
+.pag .page-item.active .page-link{
+    color: #333;
+    background-color: #FFCF1F;
+    border: 1px solid #ffcf1f;
+}
+.fill-icons{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FFCF1F;
+    position: relative;
+}
+.fill-icons i{
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    transform: translate(-35% -30%);
+}
+.fill-icons:hover{
+    border: 3px solid #ffcf1f;
+    background-color: white ;
+}
+.active-ls{
+    border: 3px solid #ffcf1f;
+    background-color: white ;
 }

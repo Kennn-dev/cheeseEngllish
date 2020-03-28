@@ -6,8 +6,9 @@ let mongoose = require('mongoose');
 let userSchema = mongoose.Schema({
     name: String,
     email: String,
-    password: String
+    password: String,
+    level: String
 });
 
 
-let User = module.exports = mongoose.model('User', userSchema);
+let User = module.exports = mongoose.model('User', userSchema,'users');

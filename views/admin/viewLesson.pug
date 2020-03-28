@@ -1,0 +1,60 @@
+extends ../../layouts/common-admin
+block content
+    .container
+        h1.mt-5 View Lesson
+        form(method='POST')
+            .form-group
+                label(for='exampleInputName') Name
+                input#exampleInputName.form-control(type='text' name='name' value=lesson.name)
+            .form-group
+                label(for='exampleInputVideo') Video ID : ( http://vimeo.com/ )
+                input#exampleInputVideo.form-control(type='text' name='videoId' value=lesson.videoId readonly)
+            .form-group
+                label(for="inputLevel") Level
+                input#exampleInputlevel.form-control(type='text' name='level' value=lesson.level)
+            .form-group
+                label(for='examplQuestion1') Question 1
+                input#exampleQuestion1.form-control(type='text' name='question1' value=lesson.question.question1)
+            .form-row
+                .col
+                    label(for="exampleAnswer1") Answer A
+                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1" value=lesson.answer.answer1.a)
+                .col
+                    label(for="exampleAnswer1") Answer B
+                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1" value=lesson.answer.answer1.b)
+                .col
+                    label Hit :
+                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer1.hit)
+            .form-group
+                label(for='examplQuestion1') Question 2
+                input#exampleQuestion1.form-control(type='text' name='question2' value=lesson.question.question2)
+            .form-row
+                .col
+                    label(for="exampleAnswer2") Answer A
+                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2" value=lesson.answer.answer2.a)
+                .col
+                    label(for="exampleAnswer2") Answer B
+                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2" value=lesson.answer.answer2.b)
+                .col
+                    label Hit :
+                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer2.hit)
+            .form-group
+                label(for='examplQuestion3') Question 3
+                input#exampleQuestion1.form-control(type='text' name='question3' value=lesson.question.question3)
+            .form-row
+                .col
+                    label(for="exampleAnswer3") Answer A
+                        input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3" value=lesson.answer.answer3.a)
+                .col
+                    label(for="exampleAnswer3") Answer B
+                    input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3" value=lesson.answer.answer3.b)
+                .col
+                    label Hit :
+                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer3.hit)
+            .form-group
+                label(for="textareaScript") Script
+                textarea#textareaScript(name="script", cols="155", rows="10" )=lesson.script
+            button.btn.btn-primary.mr-3(type='submit') Update
+block footer
+    script
+            include ../../public/main.js

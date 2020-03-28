@@ -7,7 +7,10 @@ const cookieParser = require('cookie-parser');
 //database
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/web-tieng-anh',
-{useNewUrlParser: true}
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
 );
 mongoose.connection
 .once("open", ()=> console.log("Connected !"))

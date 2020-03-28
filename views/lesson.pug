@@ -1,0 +1,92 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // CSS - Bootstrap
+  style
+    include ../public/styles.css
+    include ../Bootstrap/css/bootstrap.min.css
+  script
+    include ../Bootstrap/js/bootstrap.min.js
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Cabin&display=swap' rel='stylesheet')
+  // Fonts Awesome
+  script(src='https://kit.fontawesome.com/15343104b5.js' crossorigin='anonymous')
+  title Cheese English - Profile
+  // Title with User name
+div
+  nav#navbar.navbar.navbar-expand-lg.navbar-light.fixed-top.custom-nav
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarMenu' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarMenu.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto.align-items-center
+        li.nav-item.mt-2.mr-3.ml-3.d-flex.justify-content-center
+          .user-info
+            img.avatar.ml-2(src='../img/avatar-png-1.png' alt='')
+            p.mt-2=user.name
+        li.nav-item.active.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='#')
+            | Profile 
+            span.sr-only (current)
+        li.nav-item.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='./lesson/'+user.id) Lessons
+        li.nav-item.mr-3.ml-3.d-flex.justify-content-center
+          a.nav-link(href='#') Pricing
+        .nav-item.mr-3.ml-3.d-flex.justify-content-center
+          .input-group.align-items-center
+            input#exampleInputName.form-control(type='text' placeholder='Translate here ...' name='search')
+            i.fas.fa-search.fa-lg(aria-hidden='true')
+    .mt-3.mb-3.mr-3.logo
+      img(width='200' ,='' height='40' src='../img/Cheese English Logo.png' alt='')
+.container-fluid.mt-3
+  section.page1.row.justify-content-between
+    .col-lg-8.col-sm-12
+      .mt-5.ml-3.pt-3.d-flex.align-items-center.justify-content-between
+        .d-flex.align-items-center
+          h4.font-weight-bold Level : 
+          .sign-btn.ml-3
+            a(href='#')=user.level
+        .skills.d-flex
+          .fill-icons.mr-3.active-ls
+            i.fas.fa-font.fa-lg(data-toggle='tooltip' data-placement='top' title='Vocabulary')
+          .fill-icons.mr-3
+            i.fas.fa-headphones.fa-lg(data-toggle='tooltip' data-placement='top' title='Listening')
+          .fill-icons
+            i.fas.fa-atlas.fa-lg(data-toggle='tooltip' data-placement='top' title='Grammar')
+      .mt-3.list-lesson
+        .lesson-tag.d-flex.align-items-end.mt-3
+          .lesson-name.p-3.w-100.d-flex.justify-content-between
+            h4.font-weight-bold Hello world !
+            h4.font-weight-bold Score : 999
+        .lesson-tag.d-flex.align-items-end.mt-3
+          .lesson-name.p-3.w-100.d-flex.justify-content-between
+            h4.font-weight-bold Hello world !
+            h4.font-weight-bold Score : 999
+        .lesson-tag.d-flex.align-items-end.mt-3
+          .lesson-name.p-3.w-100.d-flex.justify-content-between
+            h4.font-weight-bold Hello world !
+            h4.font-weight-bold Score : 999
+        .lesson-tag.d-flex.align-items-end.mt-3
+          .lesson-name.p-3.w-100.d-flex.justify-content-between
+            h4.font-weight-bold Hello world !
+            h4.font-weight-bold Score : 999
+        nav.p-3(aria-label='list-lesson')
+          ul.pagination.justify-content-center.pag
+            li.page-item
+              a.page-link(href='#') Previous
+            li.page-item.active
+              a.page-link(href='#') 1
+            li.page-item
+              a.page-link(href='#') 2
+            li.page-item
+              a.page-link(href='#') 3
+            li.page-item
+              a.page-link(href='#') Next
+    .col-lg-4.col-sm-12.d-flex.justify-content-center
+footer
+  script(src='../public/main.js')
+  script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 //model
 let User = require('../models/user');
-
+let Lesson = require('../models/lesson');
 const md5 = require('md5');
 
 
@@ -11,10 +11,10 @@ module.exports.login = function(req, res){
 }
 
 module.exports.checkLogin = function(req,res){
-   var email = req.body.email;
-   var password = req.body.password;
+   let email = req.body.email;
+   let password = req.body.password;
 
-   var user = User.findOne({ email: email},(err,user)=>{
+   let user = User.findOne({ email: email},(err,user)=>{
        if(err){
         console.log(err);
        }
@@ -27,7 +27,7 @@ module.exports.checkLogin = function(req,res){
                values: req.body
            })
         }
-        var hashPassword = user.password;
+        let hashPassword = user.password;
         if(hashPassword != password){
             return res.render('login',{
                 title: "Login",
@@ -57,7 +57,7 @@ module.exports.postRegister = (req,res)=>{
             });
             return;
         }else{
-            var userData = {
+            let userData = {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
@@ -75,6 +75,3 @@ module.exports.postRegister = (req,res)=>{
     })
 }
 
-module.exports.main = function(req,res){
-    res.send("This is main user page");
-}
