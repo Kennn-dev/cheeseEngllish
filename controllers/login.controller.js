@@ -5,7 +5,7 @@ let User = require('../models/user');
 let Lesson = require('../models/lesson');
 const md5 = require('md5');
 
-
+// Login ================================================================
 module.exports.login = function(req, res){
     res.render("login",{"title": "Login"});
 }
@@ -43,6 +43,8 @@ module.exports.checkLogin = function(req,res){
    });
 
 }
+
+// Register ==============================================
 module.exports.register = function(req,res){
     res.render("register");
 }

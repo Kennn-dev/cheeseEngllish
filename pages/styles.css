@@ -19,7 +19,7 @@ body{
 }
 .custom-nav{
     background-color: white;
-    z-index: 999;
+    z-index: 3;
 }
 
 .nav-item a{
@@ -151,7 +151,7 @@ body{
     width: 100%;
 }
 
-/* Lesson page */
+/* ============================== Lesson page ====================================*/
 .list-lesson{
     height: 100%;
     background-color: #f8f9fa6e;
@@ -194,4 +194,54 @@ body{
 .active-ls{
     border: 3px solid #ffcf1f;
     background-color: white ;
+}
+/* ====================================================================== */
+.active-modal{
+    display: block !important;
+}
+.popup-lesson{
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    transform: translate(-5%, -5%);
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.45); 
+    z-index: 9999;
+    border-radius: 20px;
+    border: 2px solid #FFCF1F;
+}
+.popup-lesson{
+    overflow: auto;
+}
+.header-popup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; 
+}
+.header-popup h1{
+   padding-top: 10px;
+}
+.header::after{
+    content: '';
+    height: 1px;
+    width: 95%;
+    background-color: #00000024;
+    display: block;
+    margin: auto;
+}
+/*  */
+.script{
+    width: 100%;
+    padding: 20px ;
+    border: 1px #FFCF1F solid;
+}
+.quiz{
+    
+    height: 100%;
+    padding: 20px ;
+    /*border: 1px #FFCF1F solid ; */
 }

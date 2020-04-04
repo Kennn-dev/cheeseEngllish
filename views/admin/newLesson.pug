@@ -18,39 +18,43 @@ block content
             .form-row
                 .col
                     label(for="exampleAnswer1") Answer A
-                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1_a" )
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerA' class='mr-3' name='checkA1' checked type='checkbox' )
+                        input#exampleAnswer1(type='text' name='answer1_a')
                 .col
                     label(for="exampleAnswer1") Answer B
-                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1_b" )
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit1')
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerB' class='mr-3' name='checkB1' checked type='checkbox' )
+                        input#exampleAnswer1(type='text' name='answer1_b')
             .form-group
                 label(for='examplQuestion1') Question 2
                 input#exampleQuestion1.form-control(type='text' name='question2')
             .form-row
+                .form-row
                 .col
                     label(for="exampleAnswer2") Answer A
-                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2_a" )
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerA' class='mr-3' name='checkA2' checked type='checkbox' )
+                        input#exampleAnswer2(type='text' name='answer2_a')
                 .col
                     label(for="exampleAnswer2") Answer B
-                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2_b" )
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit2')
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerB' class='mr-3' name='checkB2' checked type='checkbox' )
+                        input#exampleAnswer2(type='text' name='answer2_b')
             .form-group
                 label(for='examplQuestion3') Question 3
                 input#exampleQuestion1.form-control(type='text' name='question3')
             .form-row
                 .col
                     label(for="exampleAnswer3") Answer A
-                        input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3_a" )
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerA' class='mr-3' name='checkA3' checked type='checkbox' )
+                        input#exampleAnswer3(type='text' name='answer3_a')
                 .col
                     label(for="exampleAnswer3") Answer B
-                    input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3_b" )
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit3')
+                    .answer.mt-3.align-item-center.mb-3
+                        input(id='answerB' class='mr-3' name='checkB3' checked type='checkbox' )
+                        input#exampleAnswer3(type='text' name='answer3_b')
             .form-group
                 label(for="textareaScript") Script
                 textarea#textareaScript(name="script", cols="155", rows="10" )

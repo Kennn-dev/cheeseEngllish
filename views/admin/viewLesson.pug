@@ -16,41 +16,80 @@ block content
                 label(for='examplQuestion1') Question 1
                 input#exampleQuestion1.form-control(type='text' name='question1' value=lesson.question.question1)
             .form-row
-                .col
-                    label(for="exampleAnswer1") Answer A
-                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1" value=lesson.answer.answer1.a)
-                .col
-                    label(for="exampleAnswer1") Answer B
-                    input#exampleAnswer1(class='d-flex flex-column mb-3' type="text", name="answer1" value=lesson.answer.answer1.b)
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer1.hit)
+                if(lesson.answer.answer1.a.hit === true)
+                    .col
+                        label(for="exampleAnswer1") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=true type='radio' name='answer1_a' value=lesson.answer.answer1.a.name )
+                            input( type='text' name='checkA1' value=lesson.answer.answer1.a.title)
+                    .col
+                        label(for="exampleAnswer1") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=false type='radio' name='answer1_b' value=lesson.answer.answer1.b.name )               
+                            input( type='text' name='checkB1' value=lesson.answer.answer1.b.title) 
+                else
+                    .col
+                        label(for="exampleAnswer1") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=false type='radio' name='answer1_a' value=lesson.answer.answer1.a.name )
+                            input( type='text' name='checkA1' value=lesson.answer.answer1.a.title)
+                    .col
+                        label(for="exampleAnswer1") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=true type='radio' name='answer1_b' value=lesson.answer.answer1.b.name )               
+                            input( type='text' name='checkB1' value=lesson.answer.answer1.b.title)
             .form-group
                 label(for='examplQuestion1') Question 2
                 input#exampleQuestion1.form-control(type='text' name='question2' value=lesson.question.question2)
             .form-row
-                .col
-                    label(for="exampleAnswer2") Answer A
-                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2" value=lesson.answer.answer2.a)
-                .col
-                    label(for="exampleAnswer2") Answer B
-                    input#exampleAnswer2(class='d-flex flex-column mb-3' type="text", name="answer2" value=lesson.answer.answer2.b)
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer2.hit)
+                if(lesson.answer.answer2.a.hit === true)
+                    .col
+                        label(for="exampleAnswer2") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=true type='radio' name='answer2_a' value=lesson.answer.answer2.a.name )
+                            input( type='text' name='checkA2' value=lesson.answer.answer2.a.title)
+                    .col
+                        label(for="exampleAnswer2") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=false type='radio' name='answer2_b' value=lesson.answer.answer2.b.name )               
+                            input( type='text' name='checkB2' value=lesson.answer.answer2.b.title)
+                else
+                    .col
+                        label(for="exampleAnswer2") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=false type='radio' name='answer2_a' value=lesson.answer.answer2.a.name )
+                            input( type='text' name='checkA2' value=lesson.answer.answer2.a.title)
+                    .col
+                        label(for="exampleAnswer2") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=true type='radio' name='answer2_b' value=lesson.answer.answer2.b.name )               
+                            input( type='text' name='checkB2' value=lesson.answer.answer2.b.title)
             .form-group
                 label(for='examplQuestion3') Question 3
                 input#exampleQuestion1.form-control(type='text' name='question3' value=lesson.question.question3)
             .form-row
-                .col
-                    label(for="exampleAnswer3") Answer A
-                        input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3" value=lesson.answer.answer3.a)
-                .col
-                    label(for="exampleAnswer3") Answer B
-                    input#exampleAnswer3(class='d-flex flex-column mb-3' type="text", name="answer3" value=lesson.answer.answer3.b)
-                .col
-                    label Hit :
-                    input(class='ml-3 d-flex flex-column' type='text',name='hit' value=lesson.answer.answer3.hit)
+                if(lesson.answer.answer3.a.hit === true)
+                    .col
+                        label(for="exampleAnswer3") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=true type='radio' name='answer3_a' value=lesson.answer.answer3.a.name )
+                            input( type='text' name='checkA3' value=lesson.answer.answer3.a.title)
+                    .col
+                        label(for="exampleAnswer3") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=false type='radio' name='answer3_b' value=lesson.answer.answer3.b.name )               
+                            input( type='text' name='checkB3' value=lesson.answer.answer3.b.title)
+                else
+                    .col
+                        label(for="exampleAnswer3") Answer A
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerA' class='mr-3' checked=false type='radio' name='answer3_a' value=lesson.answer.answer3.a.name )
+                            input( type='text' name='checkA3' value=lesson.answer.answer3.a.title)
+                    .col
+                        label(for="exampleAnswer3") Answer B
+                        .answer.mt-3.align-item-center.mb-3
+                            input(id='answerB' class=' mr-3' checked=true type='radio' name='answer3_b' value=lesson.answer.answer3.b.name )               
+                            input( type='text' name='checkB3' value=lesson.answer.answer3.b.title)
             .form-group
                 label(for="textareaScript") Script
                 textarea#textareaScript(name="script", cols="155", rows="10" )=lesson.script

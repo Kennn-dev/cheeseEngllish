@@ -15,7 +15,11 @@ router.get('/deleteUser/:id',controller.deleteUser);
 router.get('/lessons',controller.getLesson);
 //get/view 1 Lesson
 router.get('/viewLesson/:id',controller.viewLesson);
+//then update Lesson
+router.post('/viewLesson/:id',controller.updateLesson)
 //new Lesson
 router.get('/newLesson',controller.newLesson);
 router.post('/newLesson',controller.postNewLesson);
+//Delete Lesson
+router.get('/deleteLesson/:id',controller.deleteLesson);
 module.exports = router;

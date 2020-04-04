@@ -14,19 +14,34 @@ let lessonSchema = new mongoose.Schema(
         },
         answer: {
             answer1: {
-                a: String,
-                b: String,
-                hit: String
+                a:{
+                    title: String,
+                    hit: Boolean
+                },
+                b:{
+                    title: String,
+                    hit: Boolean
+                }
             },
             answer2: {
-                a: String,
-                b: String,
-                hit: String
+                a:{
+                    title: String,
+                    hit: Boolean
+                },
+                b:{
+                    title: String,
+                    hit: Boolean
+                }
             },
             answer3: {
-                a: String,
-                b: String,
-                hit: String
+                a:{
+                    title: String,
+                    hit: Boolean
+                },
+                b:{
+                    title: String,
+                    hit: Boolean
+                }
             }
         },
         level: String,

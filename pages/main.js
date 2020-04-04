@@ -12,3 +12,6 @@ if (prevScrollpos > currentScrollPos) {
 }
 prevScrollpos = currentScrollPos;
 }
+
+// var modalBtn = document.querySelector('.lesson-tag');
+// var modalPopup = document.querySelector()
