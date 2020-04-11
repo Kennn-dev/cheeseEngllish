@@ -13,5 +13,16 @@ if (prevScrollpos > currentScrollPos) {
 prevScrollpos = currentScrollPos;
 }
 
-// var modalBtn = document.querySelector('.lesson-tag');
-// var modalPopup = document.querySelector()
+var modalBtn = document.querySelector('.lesson-tag');
+var modalPopup = document.querySelector('.popup-lesson');
+var closeBtn = document.querySelector('.close-btn');
+modalBtn.addEventListener('click',()=>{
+    for (i = 0; i < modalPopup.length; i++) {
+        // Remove the class 'active' if it exists
+        modalPopup[i].classList.remove('active-modal')
+    }
+    modalPopup.classList.add('active-modal');
+});
+closeBtn.addEventListener('click',()=>{
+    modalPopup.classList.remove('active-modal');
+})

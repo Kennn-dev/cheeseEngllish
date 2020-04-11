@@ -13,6 +13,7 @@ router.get('/register',controller.register);
 router.post('/register',controller.postRegister);
 
 //Lesson
-
+router.get('/lesson/:id',controller.userLesson);
+// router.post('/lesson/id',controller.userLesson);
 
 module.exports = router;

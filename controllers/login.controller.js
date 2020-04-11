@@ -77,3 +77,24 @@ module.exports.postRegister = (req,res)=>{
     })
 }
 
+// Lesson ========================================================================
+module.exports.userLesson = function(req,res){
+    const id = req.params.id;
+    User.findOne({_id:id},function(err,user){
+        const currentUser = user;
+        let userLevel = currentUser.level;
+        const findLesson = Lesson.find({level:userLevel},(err,lessons)=>{
+            if(err){
+                console.log(err)
+            }else{
+                res.render('lesson',
+                    { 
+                        user:currentUser,
+                        lessons:lessons
+                    }
+                )
+            }
+        }
+        );
+    });
+ }

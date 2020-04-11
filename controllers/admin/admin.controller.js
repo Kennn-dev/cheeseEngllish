@@ -135,7 +135,6 @@ module.exports.postNewLesson = function(req,res){
     }
 //View Each Lesson
 module.exports.viewLesson = function(req,res){
-    debugger;
     Lesson.findById(req.params.id, (err,lesson)=>{
         res.render('admin/viewLesson',{
             lesson: lesson,
@@ -200,21 +199,6 @@ module.exports.updateLesson = function(req,res){
             hit : Boolean(req.body.answer3_b)
         }
     }
-
-    // lesson.answer.answer1.a.title = req.body.checkA1;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.answer1_a);
-    // lesson.answer.answer1.b.title = req.body.checkB1;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.answer1_b);
-
-    // lesson.answer.answer2.a.title = req.body.answer2_a;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.checkA2);
-    // lesson.answer.answer2.b.title = req.body.answer2_b;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.checkB2);
-
-    // lesson.answer.answer3.a.title = req.body.answer3_a;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.checkA3);
-    // lesson.answer.answer3.b.title = req.body.answer3_b;
-    // lesson.answer.answer1.a.hit = Boolean(req.body.checkB3);
     
     let query = {_id: req.params.id}
     Lesson.updateOne(query,lesson,(err)=>{

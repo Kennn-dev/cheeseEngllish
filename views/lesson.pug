@@ -45,7 +45,7 @@ div
     .col-lg-8.col-sm-12
       .mt-5.ml-3.pt-3.d-flex.align-items-center.justify-content-between
         .d-flex.align-items-center
-          h4.font-weight-bold Level : 
+          h4.font-weight-bold Level :
           .sign-btn.ml-3
             a(href='#')=user.level
         .skills.d-flex
@@ -56,22 +56,11 @@ div
           .fill-icons
             i.fas.fa-atlas.fa-lg(data-toggle='tooltip' data-placement='top' title='Grammar')
       .mt-3.list-lesson
-        .lesson-tag.d-flex.align-items-end.mt-3
-          .lesson-name.p-3.w-100.d-flex.justify-content-between
-            h4.font-weight-bold Hello world !
-            h4.font-weight-bold Score : 999
-        .lesson-tag.d-flex.align-items-end.mt-3
-          .lesson-name.p-3.w-100.d-flex.justify-content-between
-            h4.font-weight-bold Hello world !
-            h4.font-weight-bold Score : 999
-        .lesson-tag.d-flex.align-items-end.mt-3
-          .lesson-name.p-3.w-100.d-flex.justify-content-between
-            h4.font-weight-bold Hello world !
-            h4.font-weight-bold Score : 999
-        .lesson-tag.d-flex.align-items-end.mt-3
-          .lesson-name.p-3.w-100.d-flex.justify-content-between
-            h4.font-weight-bold Hello world !
-            h4.font-weight-bold Score : 999
+        each lesson in lessons
+          .lesson-tag.d-flex.align-items-end.mt-3
+            .lesson-name.p-3.w-100.d-flex.justify-content-between
+              h4.font-weight-bold=lesson.name
+              h4.font-weight-bold Score : 999
         nav.p-3(aria-label='list-lesson')
           ul.pagination.justify-content-center.pag
             li.page-item

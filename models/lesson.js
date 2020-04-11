@@ -16,7 +16,7 @@ let lessonSchema = new mongoose.Schema(
             answer1: {
                 a:{
                     title: String,
-                    hit: Boolean
+                    hit: Boolean 
                 },
                 b:{
                     title: String,
