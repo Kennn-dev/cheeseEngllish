@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-var flash = require('connect-flash');
 var session = require('express-session');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+
 //database
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/web-tieng-anh',
@@ -19,7 +20,8 @@ mongoose.connection
 });
 
 // Static folder
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //stuff
 const bodyParser = require('body-parser');
@@ -41,10 +43,20 @@ app.use(function(req, res, next) {
     res.locals.messages = req.flash();
     next();
 });
+
+//Handle CORS 
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Origin','*'); //* : give access to any client 
+    res.header('Access-Control-Allow-Headers','*') ;// kind of header to accept
+    if(req.method === 'OPTION'){
+        res.header('Access-Control-Allow-Methods','GET, POST, PUT, DELETE');
+        return res.status(200).json({});
+    }
+    next();
+});
 // Express Mess Middleware
 
 // Express Validator 
-
 
 //View Engine Pug
 app.set('view engine', 'pug');
@@ -64,6 +76,7 @@ app.use('/users', userRoute);
 const adminRoute = require('./routes/adm.route');
 app.use('/admin', adminRoute);
 
-app.listen(3000, ()=>{
-    console.log("Server start !!!!")
+const port = 9000;
+app.listen(port, ()=>{
+    console.log("Server start at port :",port )
 })

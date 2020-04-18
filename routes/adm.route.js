@@ -2,24 +2,24 @@ const express = require('express');
 
 const controller = require('../controllers/admin/admin.controller');
 var router = express.Router();
-router.get('/views',controller.userList);
-router.get('/viewUser/:id',controller.viewUser);
-// router.get('/main',controller.main);
-//Update
-router.post('/viewUser/:id',controller.updateUser);
-//Delete
-router.get('/deleteUser/:id',controller.deleteUser);
+// router.get('/views',controller.userList);
+// router.get('/viewUser/:id',controller.viewUser);
+// // router.get('/main',controller.main);
+// //Update
+// router.post('/viewUser/:id',controller.updateUser);
+// //Delete
+// router.get('/deleteUser/:id',controller.deleteUser);
 
 
 //get all Lesson
 router.get('/lessons',controller.getLesson);
 //get/view 1 Lesson
-router.get('/viewLesson/:id',controller.viewLesson);
+// router.get('/viewLesson/:id',controller.viewLesson);
 //then update Lesson
-router.post('/viewLesson/:id',controller.updateLesson)
+// router.post('/viewLesson/:id',controller.updateLesson)
 //new Lesson
-router.get('/newLesson',controller.newLesson);
-router.post('/newLesson',controller.postNewLesson);
+// router.get('/newLesson',controller.newLesson);
+// router.post('/newLesson',controller.postNewLesson);
 //Delete Lesson
-router.get('/deleteLesson/:id',controller.deleteLesson);
+// router.get('/deleteLesson/:id',controller.deleteLesson);
 module.exports = router;

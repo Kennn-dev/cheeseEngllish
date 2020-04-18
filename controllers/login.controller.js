@@ -3,98 +3,107 @@ const bcrypt = require('bcrypt');
 //model
 let User = require('../models/user');
 let Lesson = require('../models/lesson');
-const md5 = require('md5');
+const jwt = require('jsonwebtoken');
 
 // Login ================================================================
-module.exports.login = function(req, res){
-    res.render("login",{"title": "Login"});
-}
+// module.exports.login = function(req, res){
+//     res.render("login",{"title": "Login"});
+// }
 
 module.exports.checkLogin = function(req,res){
-   let email = req.body.email;
-   let password = req.body.password;
-
-   let user = User.findOne({ email: email},(err,user)=>{
-       if(err){
-        console.log(err);
-       }
-       if(!user){
-           return res.render('login',{
-               title: "Login",
-               errors: [
-                   'Wrong Email'
-               ],
-               values: req.body
-           })
+   User.findOne({email: req.body.email})
+   .then(user=>{
+        if(user) {
+            if(bcrypt.compareSync(req.body.password, user.password)){
+                const payload = {
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    level:user.level,
+                }
+                let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
+                res.send(token);
+                // res.json({ success : 'Login done !'}); 
+            }else{
+                res.json({error : 'Wrong password '});
+            }
+        }else{
+            res.json({error : `User doesn't exist :( `});
         }
-        let hashPassword = user.password;
-        if(hashPassword != password){
-            return res.render('login',{
-                title: "Login",
-                errors: [
-                    'Wrong Password'
-                ],
-                values: req.body
-            })
-        }
-        res.render('profile',{
-            user: user
-        });
-   });
-
+   })
+   .catch(err =>{
+       res.json({error : err});
+   })
 }
 
 // Register ==============================================
-module.exports.register = function(req,res){
-    res.render("register");
-}
 module.exports.postRegister = (req,res)=>{
-    
-    if(req.body.name && req.body.email && req.body.password && req.body.passwordConfirm ){
-        let errors = [];
-        if(req.body.password != req.body.passwordConfirm){
-            res.render("register",{
-                errors:[ 'Password confirm is not correct '],
-                values: req.body
-            });
-            return;
-        }else{
-            let userData = {
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm
-            }
-        }
+    const newUser = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
     }
-    
-    User.create(userData,(err,saveUser)=>{
-        if(err){
-            console.log(err);
-            return next(err)
+    if(req.body.password != req.body.passwordConfirm){
+        res.json({ error : 'Password not same !' })
+    }else{
+        User.findOne({
+            email: req.body.email
+        })
+        .then(user=>{
+            if(!user){
+                bcrypt.hash(req.body.password, 10, function(err, hash) {
+                    // Store hash in your password DB.
+                    newUser.password = hash;
+                    User.create(newUser)
+                    .then(user => {
+                        res.json({success : `${user.name} created !`});
+                    })
+                    .catch(err=>{
+                        res.json({error : err})
+                    })
+                });
+            }else{
+                res.json({error : `${user.email} was exist`});
+            }
+        })
+        .catch(err =>{
+            res.send({ error : err});
+        });
+    }
+}
+// GET profile ======================================================================
+module.exports.getProfile = function(req,res){
+    var decoded = jwt.verify(req.headers['authorization'],'keyboard cat');
+    User.findOne({_id: decoded._id})
+    .then(user =>{
+        if(user){
+            res.json({user});
+        }else{
+            res.json({error: 'User not found !'});
         }
-        return res.redirect('/users/login');
+    })
+    .catch(err=>{
+        res.json({error:err});
     })
 }
-
-// Lesson ========================================================================
-module.exports.userLesson = function(req,res){
-    const id = req.params.id;
-    User.findOne({_id:id},function(err,user){
-        const currentUser = user;
-        let userLevel = currentUser.level;
-        const findLesson = Lesson.find({level:userLevel},(err,lessons)=>{
-            if(err){
-                console.log(err)
-            }else{
-                res.render('lesson',
-                    { 
-                        user:currentUser,
-                        lessons:lessons
-                    }
-                )
-            }
-        }
-        );
-    });
- }
+// Get Lesson ========================================================================
+// module.exports.userLesson = function(req,res){
+//     const id = req.params.id;
+//     User.findOne({_id:id},function(err,user){
+//         const currentUser = user;
+//         let userLevel = currentUser.level;
+//         const findLesson = Lesson.find({level:userLevel},(err,lessons)=>{
+//             if(err){
+//                 console.log(err)
+//             }else{
+//                 res.render('lesson',
+//                     { 
+//                         user:currentUser,
+//                         lessons:lessons
+//                     }
+//                 )
+//             }
+//         }
+//         );
+//     });
+//  }
