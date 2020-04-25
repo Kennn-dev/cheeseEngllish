@@ -86,24 +86,36 @@ module.exports.getProfile = function(req,res){
         res.json({error:err});
     })
 }
-// Get Lesson ========================================================================
-// module.exports.userLesson = function(req,res){
-//     const id = req.params.id;
-//     User.findOne({_id:id},function(err,user){
-//         const currentUser = user;
-//         let userLevel = currentUser.level;
-//         const findLesson = Lesson.find({level:userLevel},(err,lessons)=>{
-//             if(err){
-//                 console.log(err)
-//             }else{
-//                 res.render('lesson',
-//                     { 
-//                         user:currentUser,
-//                         lessons:lessons
-//                     }
-//                 )
-//             }
-//         }
-//         );
-//     });
-//  }
+
+// Get ALL Lesson ========================================================================
+module.exports.userLesson = function(req,res){
+    const level = req.query.level ; 
+    Lesson.find(level ? { level } : {})
+    .then(lessons =>{
+        if(!lessons){
+            res.json({error : 'Cannot get Lessons'});
+        }else{
+            res.json({result : lessons});
+        }
+    })
+    .catch(err =>{
+        res.json({error : err});
+    })
+
+ }
+ // Get 1 Lesson ======================================================
+ module.exports.singleLesson = function(req,res){
+    const id = req.params.id ; 
+    Lesson.findOne({_id : id})
+    .then(lesson =>{
+        if(!lesson){
+            res.json({error : 'Cannot get Lessons'});
+        }else{
+            res.json(lesson);
+        }
+    })
+    .catch(err =>{
+        res.json({error : err});
+    })
+
+ }

@@ -1,0 +1,9 @@
+.lesson-tag::after{
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #bdbdbd;
+}
+.lesson-tag{
+    background-color: #e9ecef !important;
+}

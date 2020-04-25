@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -12,13 +12,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 
 
-export default function LessonTag() {
-    
+export default function LessonTag(props) {
     return (
         <div>
             <Breadcrumb className='lesson-tag'>
-                <BreadcrumbItem >Lesson's Name &nbsp;
-                <Badge color="secondary">Beginner</Badge>
+                <BreadcrumbItem >{props.lesson.name} &nbsp;
+                <Badge color="secondary">{props.lesson.level}</Badge>
                 </BreadcrumbItem>
                 <hr className="my-2" />
                 <Button 
@@ -26,7 +25,7 @@ export default function LessonTag() {
                     size="sm"
                 >
                 <Link 
-                    to='/learn' 
+                    to={`/learn/${props.lesson._id}`} 
                     className='text-light'
                 >
                     Learn now

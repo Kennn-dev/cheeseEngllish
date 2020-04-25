@@ -5,6 +5,61 @@ var session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 
+const http = require('http');
+const socketio = require('socket.io');
+//chat Model 
+// const Chat = require('./models/chat');
+//server Socket
+const server = http.createServer(app);
+const io = socketio(server);
+const packageMessenge = (name,text)=>{
+    const message = { 
+        name, 
+        text,
+        createAt : new Date().getTime()
+    }
+    return message;
+}
+var listUser = [];
+io.on('connection', (socket) => {
+    socket.on('newUserJoin',(data =>{
+        listUser.push(data);
+        socket.emit(
+            'otherMessage',
+            packageMessenge('Admin','Welcome to our Hood 😎')
+            );
+        socket.broadcast.emit(
+            'otherMessage',
+            packageMessenge('Amin', `${data} has joined 😍`)
+            );
+        io.sockets.emit('updateListUser',listUser);
+        
+    }))
+   
+    socket.on('sendMessage', (data)=>{
+        console.log(data);
+        io.sockets.emit(
+            'otherMessage',
+            packageMessenge(data.name, data.message)
+            );
+            console.log(
+                packageMessenge(data.name, data.message)
+                
+            )
+        // io.sockets.emit('messenge', {user:user,text:messenge});
+        // console.log(roomList);
+        // console.log(user);
+        // console.log(messenge);
+        // callback();
+        
+    })
+    socket.on('disconnect', (name) => {
+        listUser.splice(name,1);
+        console.log('Disconnected');
+    });
+  });
+
+
 //database
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/web-tieng-anh',
@@ -18,6 +73,9 @@ mongoose.connection
 .on("error", error =>{
    console.log("Your Error :", error); 
 });
+
+
+
 
 // Static folder
 // app.use(express.static('public'));
@@ -76,7 +134,11 @@ app.use('/users', userRoute);
 const adminRoute = require('./routes/adm.route');
 app.use('/admin', adminRoute);
 
+//Socket Routes
+const socketRoute = require('./routes/socket.route');
+app.use('/chat', socketRoute);
+
 const port = 9000;
-app.listen(port, ()=>{
-    console.log("Server start at port :",port )
+server.listen(port, ()=>{
+    console.log("Server start at port :",port );
 })

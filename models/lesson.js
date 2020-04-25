@@ -3,47 +3,16 @@ let mongoose = require('mongoose');
 
 
 //schema
+let quizSchema = new mongoose.Schema({
+    question : String,
+    answers : [],
+    correct_answer : String
+})
 let lessonSchema = new mongoose.Schema(
     {
         name: String,
         videoId: String,
-        question: {
-            question1: String,
-            question2: String,
-            question3: String
-        },
-        answer: {
-            answer1: {
-                a:{
-                    title: String,
-                    hit: Boolean 
-                },
-                b:{
-                    title: String,
-                    hit: Boolean
-                }
-            },
-            answer2: {
-                a:{
-                    title: String,
-                    hit: Boolean
-                },
-                b:{
-                    title: String,
-                    hit: Boolean
-                }
-            },
-            answer3: {
-                a:{
-                    title: String,
-                    hit: Boolean
-                },
-                b:{
-                    title: String,
-                    hit: Boolean
-                }
-            }
-        },
+        quizs : [quizSchema],
         level: String,
         script: String
     }

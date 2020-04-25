@@ -16,7 +16,11 @@ router.post('/register',controller.postRegister);
 // router.get('/profile',controller.getProfile);
 
 //Lesson
-// router.get('/lesson/:id',controller.userLesson);
+//Get ALL
+router.get('/lesson',controller.userLesson);
+//Get single Lesson
+router.get('/learn/:id',controller.singleLesson);
+//router.get('/lesson/:id',controller.userLesson);
 // router.post('/lesson/id',controller.userLesson);
 
 module.exports = router;

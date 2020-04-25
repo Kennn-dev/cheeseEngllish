@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import Script from './Script'
+
 import {
     Card, CardBody,
     CardTitle,Button,
   } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-export default function Video() {
+export default function Video(props) {
+    
     const [open, setopen] = useState(false);
-    const handleClick = () =>{
+    const handleClick = (e) =>{
+        e.preventDefault();
         setopen(!open)
     }
     return (
@@ -16,7 +18,7 @@ export default function Video() {
                 <CardBody>
                 <iframe 
                     title="vimeo-player" 
-                    src="https://player.vimeo.com/video/365176979" 
+                    src={`https://player.vimeo.com/video/${props.lesson.videoId}`} 
                     width="600" 
                     height="360"
                     frameborder="0" 
@@ -27,13 +29,22 @@ export default function Video() {
                     <h3 
                         className='font-weight-bold'
                     >
-                        Would you like to live on a desert island?
+                        {props.lesson.name}
                     </h3>
                 </CardTitle>
                 <Button onClick={handleClick}>Show Script</Button>
-                </CardBody>
-                
-                { open ? <Script/> : null}
+                { open ? 
+                    <div className='mt-3 container-fluid'>
+                        <Card>
+                            <CardBody>
+                                <p>
+                                    {props.lesson.script}
+                                </p>
+                            </CardBody>
+                        </Card>
+                    </div>
+                : <div></div>}
+                </CardBody>     
             </Card>
         </div>
     )
