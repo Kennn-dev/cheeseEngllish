@@ -37,52 +37,54 @@ export default function ChatTab({location}) {
             setRoomList(list);
         })
         
-        // return ()=>{
-        //     //Clear
-        //     // setRoomList([]);
-        //     socket.emit('disconnect',name);
-        //     socket.off();
-        // }
     },[url,location.search])
 
     useEffect(() => {
         socket.on('otherMessage',(message =>{
             setMessages([...messages,message]);
             console.log(message);
-            // message - Obj name-text-createAt
         }))
-    }, [])
+    }, [messages])
     
     return (
         <div>
             <h1>Chat</h1>
-            <div className="row">
-                <div className="col-6">
-                    Current users :
+            <div className="d-flex">
+                <div className="col-6 container">
+                <ul class="list-group">
+                <li class="list-group-item active"><h4>Current users :</h4></li>
                     {
                         roomList.map(user =>
-                        <h3>{user}</h3>
+                        <li class="list-group-item">{user}</li>
                         )
                     }
+                </ul>
                 </div>
                 <div className="col-6">
-                    <ChatBox messages ={messages}/>
+                    <ChatBox messages ={messages} name={name}/>
+                    <div className="container input-group mb-3">
                     <input 
                         type="text" 
-                        className="form-control"
+                        className="form-control" 
+                        placeholder="Recipient's username" 
+                        aria-label="Recipient's username" 
+                        aria-describedby="button-addon2"
                         value={message}
                         onChange={e => setMessage(e.target.value)}
                         onKeyPress={ e => e.key === 'Enter' ? sendMessage(e) : null}
                     />
-                    <div className="">
-                        <button 
-                            className="btn btn-outline-secondary" 
-                            type="button" 
-                            id="button-addon2"
-                            onClick={e=> sendMessage(e)}
-                        >
-                            Send
-                        </button>
+                    <div 
+                        className="input-group-append"
+                    >
+                    <button 
+                        className="btn btn-outline-secondary" 
+                        type="button" 
+                        id="button-addon2"
+                        onClick={e=> sendMessage(e)}
+                    >
+                        Send
+                    </button>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -23,4 +23,7 @@ router.get('/learn/:id',controller.singleLesson);
 //router.get('/lesson/:id',controller.userLesson);
 // router.post('/lesson/id',controller.userLesson);
 
+//GET Scores 
+router.get('/scores',controller.getScores);
+
 module.exports = router;

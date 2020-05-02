@@ -35,7 +35,12 @@ export default function Sidebar(props) {
                     </NavLink>
                 </NavItem>
             </Nav>
-            <NavbarText>{props.user.level}</NavbarText>
+            <NavItem>
+                <NavbarText>{props.user.level}</NavbarText>
+            </NavItem>
+            <NavItem>
+                <NavbarText>{props.user.score}</NavbarText>
+            </NavItem>        
             </Collapse>
         </Navbar>
         </div>

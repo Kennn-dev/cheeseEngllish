@@ -17,8 +17,12 @@ let userSchema = mongoose.Schema({
         require: true
     },
     level: {
-        type:String,
+        type: String,
         default: 'beginner'
+    },
+    score: {
+        type: Number,
+        default : 0,
     }
     
 });

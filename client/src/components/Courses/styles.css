@@ -1,3 +1,6 @@
 .lesson-tag{
     background-color: #fdfdfd;
 }
+.courses{
+    max-height: 300px;
+}

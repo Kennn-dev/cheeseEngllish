@@ -105,4 +105,15 @@ function ProgressBar({ max, current }) {
 
 Save score with Form 
 
+State scoreStore = 4  
+Check with each  right ? scoreStore : null 
+Block with Level not equal
+setScore = scoreStore 
+
+ProgressBar 
+Score Chart
+
+
+More type Learning .... 
+
 

@@ -25,7 +25,8 @@ export default function ProfileTab() {
             ...user,
             name: decode.name,
             email: decode.email,
-            level: decode.level
+            level: decode.level,
+            score: decode.score
         })
     }, [])
     

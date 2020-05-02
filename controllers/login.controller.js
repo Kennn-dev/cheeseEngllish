@@ -10,6 +10,18 @@ const jwt = require('jsonwebtoken');
 //     res.render("login",{"title": "Login"});
 // }
 
+module.exports.getScores = function(req,res){
+    User.find({})
+    .then(users => {
+        if(!users){
+            res.json({error : 'Cannot find '});
+        }else{
+            res.json(users);
+        }
+    })
+    .catch(err => res.json({error : err}));
+}
+
 module.exports.checkLogin = function(req,res){
    User.findOne({email: req.body.email})
    .then(user=>{
@@ -19,7 +31,8 @@ module.exports.checkLogin = function(req,res){
                     _id: user._id,
                     name: user.name,
                     email: user.email,
-                    level:user.level,
+                    level: user.level,
+                    score: user.score
                 }
                 let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
                 res.send(token);

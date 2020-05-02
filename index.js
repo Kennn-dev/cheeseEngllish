@@ -4,6 +4,7 @@ const path = require('path');
 var session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
+const moment = require('moment');
 
 const http = require('http');
 const socketio = require('socket.io');
@@ -13,10 +14,11 @@ const socketio = require('socket.io');
 const server = http.createServer(app);
 const io = socketio(server);
 const packageMessenge = (name,text)=>{
+    const date = new Date().getTime();
     const message = { 
         name, 
         text,
-        createAt : new Date().getTime()
+        createAt : moment(date).format('LT')
     }
     return message;
 }
@@ -30,7 +32,7 @@ io.on('connection', (socket) => {
             );
         socket.broadcast.emit(
             'otherMessage',
-            packageMessenge('Amin', `${data} has joined 😍`)
+            packageMessenge('Admin', `${data} has joined 😍`)
             );
         io.sockets.emit('updateListUser',listUser);
         
@@ -40,10 +42,11 @@ io.on('connection', (socket) => {
         console.log(data);
         io.sockets.emit(
             'otherMessage',
-            packageMessenge(data.name, data.message)
+            packageMessenge(data.name, data.message, data.createAt)
             );
+
             console.log(
-                packageMessenge(data.name, data.message)
+                packageMessenge(data.name, data.message,data.createAt)
                 
             )
         // io.sockets.emit('messenge', {user:user,text:messenge});
@@ -133,10 +136,6 @@ app.use('/users', userRoute);
 //admin Routes
 const adminRoute = require('./routes/adm.route');
 app.use('/admin', adminRoute);
-
-//Socket Routes
-const socketRoute = require('./routes/socket.route');
-app.use('/chat', socketRoute);
 
 const port = 9000;
 server.listen(port, ()=>{
