@@ -2,24 +2,21 @@ const express = require('express');
 
 const controller = require('../controllers/admin/admin.controller');
 var router = express.Router();
-// router.get('/views',controller.userList);
-// router.get('/viewUser/:id',controller.viewUser);
-// // router.get('/main',controller.main);
-// //Update
-// router.post('/viewUser/:id',controller.updateUser);
-// //Delete
-// router.get('/deleteUser/:id',controller.deleteUser);
-
+router.get('/users',controller.userList);               //[x]  
+router.get('/users/:id',controller.viewUser);           //[x]
+// //Update user
+router.post('/updateUser/:id',controller.updateUser);   //[x]
+// //Delete user
+router.post('/deleteUser/:id',controller.deleteUser);   //[x]
 
 //get all Lesson
-router.get('/lessons',controller.getLesson);
+router.get('/lessons',controller.getLesson);            //[x] can get By query ?Level
 //get/view 1 Lesson
-// router.get('/viewLesson/:id',controller.viewLesson);
-//then update Lesson
-// router.post('/viewLesson/:id',controller.updateLesson)
+router.get('/lesson/:id',controller.viewLesson);       //[x]
 //new Lesson
-// router.get('/newLesson',controller.newLesson);
-// router.post('/newLesson',controller.postNewLesson);
+router.post('/addLesson',controller.addNewLesson);      //[x]
+//then update Lesson
+router.post('/updateLesson/:id',controller.updateLesson)//[x]
 //Delete Lesson
-// router.get('/deleteLesson/:id',controller.deleteLesson);
+router.post('/deleteLesson/:id',controller.deleteLesson);//[x]
 module.exports = router;

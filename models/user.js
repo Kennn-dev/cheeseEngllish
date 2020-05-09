@@ -23,6 +23,10 @@ let userSchema = mongoose.Schema({
     score: {
         type: Number,
         default : 0,
+    },
+    type : {
+        type: String,
+        default : "user"
     }
     
 });

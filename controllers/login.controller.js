@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const translate = require('google-translate-api');
 //model
 let User = require('../models/user');
 let Lesson = require('../models/lesson');
 const jwt = require('jsonwebtoken');
 
-// Login ================================================================
-// module.exports.login = function(req, res){
-//     res.render("login",{"title": "Login"});
-// }
-
+// get ALL SCORES
 module.exports.getScores = function(req,res){
     User.find({})
     .then(users => {
@@ -21,21 +18,42 @@ module.exports.getScores = function(req,res){
     })
     .catch(err => res.json({error : err}));
 }
+// Login ================================================================
+// module.exports.login = function(req, res){
+//     res.render("login",{"title": "Login"});
+// }
 
 module.exports.checkLogin = function(req,res){
    User.findOne({email: req.body.email})
    .then(user=>{
-        if(user) {
+       if(!user){
+            res.json({error : "User not found "})
+       }else if(user.type === "user") {
             if(bcrypt.compareSync(req.body.password, user.password)){
                 const payload = {
                     _id: user._id,
                     name: user.name,
                     email: user.email,
                     level: user.level,
-                    score: user.score
+                    score: user.score,
+                    type : user.type,
                 }
                 let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
-                res.send(token);
+                res.send({token , type : user.type});
+                // res.json({ success : 'Login done !'}); 
+            }else{
+                res.json({error : 'Wrong password '});
+            }
+        }else if(user.type === "admin"){
+            if(bcrypt.compareSync(req.body.password, user.password)){
+                const payload = {
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    type : user.type,
+                }
+                let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
+                res.send({token,type: user.type});
                 // res.json({ success : 'Login done !'}); 
             }else{
                 res.json({error : 'Wrong password '});
@@ -48,7 +66,6 @@ module.exports.checkLogin = function(req,res){
        res.json({error : err});
    })
 }
-
 // Register ==============================================
 module.exports.postRegister = (req,res)=>{
     const newUser = {
@@ -132,3 +149,4 @@ module.exports.userLesson = function(req,res){
     })
 
  }
+ 

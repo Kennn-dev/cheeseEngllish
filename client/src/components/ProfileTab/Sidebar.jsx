@@ -12,6 +12,8 @@ import {
   NavLink,
   NavbarText
 } from 'reactstrap';
+import Translate from '../TranslateInput/TranslateInput'
+
 export default function Sidebar(props) {
         const [isOpen, setIsOpen] = useState(false);
         const toggle = () => setIsOpen(!isOpen)
@@ -40,7 +42,8 @@ export default function Sidebar(props) {
             </NavItem>
             <NavItem>
                 <NavbarText>{props.user.score}</NavbarText>
-            </NavItem>        
+            </NavItem>
+            <Translate/>       
             </Collapse>
         </Navbar>
         </div>

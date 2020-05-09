@@ -5,9 +5,11 @@ var session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const moment = require('moment');
-
+const bodyParser = require('body-parser');
 const http = require('http');
 const socketio = require('socket.io');
+const translate = require('google-translate-api');
+
 //chat Model 
 // const Chat = require('./models/chat');
 //server Socket
@@ -37,7 +39,6 @@ io.on('connection', (socket) => {
         io.sockets.emit('updateListUser',listUser);
         
     }))
-   
     socket.on('sendMessage', (data)=>{
         console.log(data);
         io.sockets.emit(
@@ -49,12 +50,6 @@ io.on('connection', (socket) => {
                 packageMessenge(data.name, data.message,data.createAt)
                 
             )
-        // io.sockets.emit('messenge', {user:user,text:messenge});
-        // console.log(roomList);
-        // console.log(user);
-        // console.log(messenge);
-        // callback();
-        
     })
     socket.on('disconnect', (name) => {
         listUser.splice(name,1);
@@ -85,11 +80,12 @@ mongoose.connection
 app.use(express.static(path.join(__dirname, 'public')));
 
 //stuff
-const bodyParser = require('body-parser');
+
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+
 // parse application/json
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cookieParser('keyboard cat'));
 app.use(session({
@@ -129,6 +125,8 @@ app.get('/', function(req,res){
     res.render('home');
 });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Use Routes
 const userRoute = require('./routes/user.route');
 app.use('/users', userRoute);

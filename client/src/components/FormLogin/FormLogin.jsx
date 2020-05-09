@@ -51,22 +51,32 @@ export const FormLogin = () => {
         })
         alert.error(useData.error);
         return useData;
-      }else{
-        setForm({
-          ...form,
-          loading: false
-        })
-        localStorage.setItem('userToken',useData);
-        alert.success('Login success !');
-        history.push('/profile');
-        return useData;
+      }else {
+        if(useData.type === "user"){
+          //user
+         setForm({
+           ...form,
+           loading: false
+         })
+         localStorage.clear();
+         localStorage.setItem('userToken',useData.token);
+         alert.success('Login success !');
+         history.push('/profile');
+         return useData;
+       }
+       if(useData.type === "admin"){
+         //admin
+         setForm({
+           ...form,
+           loading: false
+         })
+         localStorage.clear();
+         localStorage.setItem('adminToken',useData.token);
+         alert.success('Login success !');
+         history.push('/admin');
+         return useData;
+       }
       }
-      // localStorage.setItem('userToken',data);
-      // console.log(`Data : ${data}`);
-      // console.log(`Token : ${data.token}`);
-      // console.log(`Error : ${Object.data['error']}`);
-      // history.push('/profile');
-      //   return data;
     })
     .catch(err => {
       console.log(err);

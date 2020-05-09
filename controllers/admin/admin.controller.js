@@ -2,218 +2,162 @@ const mongoose = require('mongoose');
 //model
 let User = require('../../models/user');
 let Lesson = require('../../models/lesson');
+let Quiz = require('../../models/quiz')
+
 const flash = require('connect-flash');
 var session = require('express-session');
 
 
 // =================================// USER //=======================================================   
-//Render User list
+// User list
 module.exports.userList = function(req,res){
-    User.find({},(err, users)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.render('admin/admin',{
-                users: users,
-                message: ''
-            })
-        }
-    });
+    User.find({type: "user"})
+    .then(user =>{
+        user ? res.json({users : user}) : res.json({error : "Cannot find"})
+    })
+    .catch(err => res.send(err))
 };
 
 // View Each User
 module.exports.viewUser = function(req,res){
-    User.findById(req.params.id, (err,user)=>{
-        res.render('admin/viewUser',{
-            user: user,
-        })
-    });
+    const id = req.params.id;
+    User.findById(id)
+    .then(user => user ? res.json({user}) : res.json({error : "Cannot find user"}))
+    .catch(err => res.send(err))
 }
 
 // UPDATE USER =====================================================
 module.exports.updateUser = function(req, res){
-    let user = {};
-    user.name = req.body.name;
-    user.email = req.body.email;
-    let query = {_id: req.params.id}
-
-    User.updateOne(query, user,(err)=>{
-        if(err){
-            console.log(err);
-        }else{
-            req.flash('messages',{"sucess":"Update successful !"});
-            res.redirect('/admin/views');
-            req.flash('messages',{"sucess":"Update successful !"});
-        }
-    })
+    const id = req.params.id;
+    let newData = {
+        level  : req.body.level ,
+        name   : req.body.name,
+        email  : req.body.email,
+        score  : req.body.score,
+        type   : req.body.type
+    };
+    console.log(newData);
+    User.updateOne({_id: id}, newData)
+    .then(response => response ? res.send({success : 'Update Success'}) : res.send({error : 'Error'}))
+    .catch(err => res.send(err))
+   
 }
 
 // DELETE USER ======================================================== 
 module.exports.deleteUser = function(req,res){
     let id = req.params.id;
-    User.remove({_id: id}, ()=>{
-        console.log('Removed !!!');
-        req.flash("messages", {"success": "Delete done !!!"});
-        res.redirect('/admin/views');
-    });
-    
+    // console.log(id);
+    User.deleteOne({_id: id})
+    .then(response => response ? res.send('Delete Success') : res.send({error : 'Failed'}))
+    .catch(err => res.send(err))
 }
+
+
+
+
+
 
 
 //Lesson ==========================================///////////////////////======================================
 //GET Lessons
 module.exports.getLesson = function(req,res){
-   Lesson.find({}, function(err,lessons){
-        if(err){
-            console.log(err);
+    const level = req.query.level ; 
+    Lesson.find(level ? { level } : {})
+    .then(lessons =>{
+        if(!lessons){
+            res.json({error : 'Cannot get Lessons'});
         }else{
-            res.render('admin/lesson',{
-                lessons: lessons
-            })      
+            res.json({lessons : lessons});
         }
-    
-    }
-   );
-}
+    })
+    .catch(err =>{
+        res.json({error : err});
+    })
 
-// GET new Lessons
-module.exports.newLesson = function(req,res){
-    res.render('admin/newLesson');
 }
-// POST new Lessons
-module.exports.postNewLesson = function(req,res){
-    let lessonData = {
-        name: req.body.name,
-        videoId: req.body.videoId,
-        level: req.body.level,
-        question:{
-            question1: req.body.question1,
-            question2: req.body.question2,
-            question3: req.body.question3,
-        },
-        answer:{
-            answer1:{
-                a:{
-                    title: req.body.answer1_a,
-                    hit: Boolean(req.body.checkA1)
-                },
-                b: {
-                    title: req.body.answer1_b,
-                    hit: Boolean(req.body.checkB1)
-                }
-            },
-            answer2:{
-                a:{
-                    title: req.body.answer2_a,
-                    hit: Boolean(req.body.checkA2)
-                },
-                b: {
-                    title: req.body.answer2_b,
-                    hit: Boolean(req.body.checkB2)
-                }
-            },
-            answer3:{
-                a:{
-                    title: req.body.answer3_a,
-                    hit: Boolean(req.body.checkA3)
-                },
-                b: {
-                    title: req.body.answer3_b,
-                    hit: Boolean(req.body.checkB3)
-                }
-            }
-        },
-        script: req.body.script
-    }
-        Lesson.create(lessonData,(err,saveLesson)=>{
-            if(err){
-                console.log(err);
-                return next(err)
-            }
-            return res.redirect('./lessons');
-        })
-    }
 //View Each Lesson
 module.exports.viewLesson = function(req,res){
-    Lesson.findById(req.params.id, (err,lesson)=>{
-        res.render('admin/viewLesson',{
-            lesson: lesson,
-        });
-    });
+    const id = req.params.id ; 
+    Lesson.findOne({_id : id})
+    .then(lesson =>{
+        if(!lesson){
+            res.json({error : 'Cannot get Lessons'});
+        }else{
+            res.json(lesson);
+        }
+    })
+    .catch(err =>{
+        res.json({error : err});
+    })
 }
+
+// POST new Lessons
+module.exports.addNewLesson = function(req,res){ 
+    const newLesson = {
+        name   : req.body.name,
+        videoId  : req.body.videoId ,
+        level  : req.body.level,
+        script  : req.body.script,
+        quizs : []
+    };
+    const quizs = req.body.quizs;
+    // const newQuiz = [];
+    // quizs.map(quiz => {
+    //     const quizModel = new Quiz();
+    //     quizModel.question = quiz.question;
+    //     quizModel.answer = quiz.answer;
+    //     quizModel.correct_Answer = quiz.correct_Answer;
+    //     newQuiz.push(quizModel);
+        // lesson.save();
+    // })
+    Lesson.create(newLesson)
+    .then(lesson => {
+        if(!lesson) res.json({error : `Can't create Lesson`});
+        // lesson.quizs = newQuiz
+        quizs.map(quiz => {
+            const quizModel = new Quiz();
+            quizModel.question = quiz.question;
+            quizModel.answer = quiz.answer;
+            quizModel.correct_Answer = quiz.correct_Answer;
+            lesson.quizs.push(quizModel);
+            lesson.save(); // Bugged 
+        })
+        res.json({success : 'New lesson is created !'})
+    })
+    .catch(err => res.json({error : err}))
+}
+
 // UPDATE LESSON =========================================================================
-module.exports.updateUser = function(req, res){
-    let user = {};
-    user.name = req.body.name;
-    user.email = req.body.email;
-
-    let query = {_id: req.params.id}
-
-    User.updateOne(query, user,(err)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.redirect('/admin/views');
-        }
-    })
-}
 module.exports.updateLesson = function(req,res){
-    let lesson = {};
-    lesson.name = req.body.name;
-    lesson.videoId = req.body.videoId;
-    lesson.level = req.body.level;
-    lesson.script = req.body.script;
-    lesson.question = {
-        question1 : req.body.question1,
-        question2 : req.body.question2,
-        question3 : req.body.question3
-    }
-
-    lesson.answer1={
-        a:{
-            title : req.body.checkA1,
-            hit : Boolean(req.body.answer1_a)
-        },
-        b:{
-            title : req.body.checkB1,
-            hit : Boolean(req.body.answer1_b)
-        }
+    const id = req.params.id;  
+    let newData = {
+        name   : req.body.name,
+        videoId  : req.body.videoId ,
+        level  : req.body.level,
+        script  : req.body.script,
+        quizs : []
     };
-    lesson.answer2={
-        a:{
-            title : req.body.checkA2,
-            hit : Boolean(req.body.answer2_a)
-        },
-        b:{
-            title : req.body.checkB2,
-            hit : Boolean(req.body.answer2_b)
+    let quizArr = req.body.quizs;
+    quizArr.forEach(function(element){
+        let answerArr = [];
+        element.answer.forEach(answer => answerArr.push(answer));
+        let quizObj = {};
+        quizObj={
+            question: element.question,
+            answer : answerArr,
+            correct_answer : element.correct_answer
         }
-    };
-    lesson.answer3={
-        a:{
-            title : req.body.checkA3answer3,
-            hit : Boolean(req.body.answer3_a)
-        },
-        b:{
-            title : req.body.checkB3answer3,
-            hit : Boolean(req.body.answer3_b)
-        }
-    }
-    
-    let query = {_id: req.params.id}
-    Lesson.updateOne(query,lesson,(err)=>{
-        if(err){
-            console.log(err);
-        }else{
-            res.redirect('/admin/lessons')
-        }
+        newData.quizs.push(quizObj);
     })
+    // console.log(newData);
+    Lesson.updateOne({_id: id}, newData)
+    .then(response => response ? res.send({success : 'Update Success'}) : res.send({error : 'Error'}))
+    .catch(err => res.send(err))
 }
 // DELETE LESSON ==========================================================================
 module.exports.deleteLesson = function(req,res){
     let id = req.params.id;
-    Lesson.deleteOne({_id: id},()=>{
-        console.log('Removed 1 Lesson');
-        res.redirect('/admin/lessons')
-    })
+    Lesson.deleteOne({_id: id})
+    .then(response => response ? res.send('Delete Success') : res.send({error : 'Failed'}))
+    .catch(err => res.send(err))
 }

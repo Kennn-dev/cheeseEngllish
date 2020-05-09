@@ -14,13 +14,7 @@ export default function ChatTab({location}) {
     const [name , setName] =useState('');
     const [roomList, setRoomList] = useState([]);
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([
-        // {
-        //     name :'',
-        //     text: '',
-        //     createAt : new Date().getTime()
-        // }
-    ]);
+    const [messages, setMessages] = useState([]);
     const url = 'http://localhost:9000';
 
     const sendMessage = (e)=>{
