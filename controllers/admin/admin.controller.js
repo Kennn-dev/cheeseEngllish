@@ -140,11 +140,11 @@ module.exports.updateLesson = function(req,res){
     let quizArr = req.body.quizs;
     quizArr.forEach(function(element){
         let answerArr = [];
-        element.answer.forEach(answer => answerArr.push(answer));
+        element.answers.forEach(answer => answerArr.push(answer));
         let quizObj = {};
         quizObj={
             question: element.question,
-            answer : answerArr,
+            answers : answerArr,
             correct_answer : element.correct_answer
         }
         newData.quizs.push(quizObj);

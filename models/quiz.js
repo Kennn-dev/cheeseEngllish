@@ -7,7 +7,7 @@ let quizSchema = mongoose.Schema({
     question: {
         type: String
     },
-    answer : [ String ],
+    answers : [ String ],
     correct_Answer : {
         type : String
     }

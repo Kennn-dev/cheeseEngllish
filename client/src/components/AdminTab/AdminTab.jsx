@@ -11,9 +11,7 @@ import SideBarAdmin from './SideBarAdmin'
 import User from '../Ad_User/User'
 import Lessons from '../Ad_Lessons/Lessons'
 import ViewUser from '../Ad_User/ViewUser'
-import DeleteUser from '../Ad_User/DeleteUser'
 import ViewLesson from '../Ad_Lessons/ViewLesson'
-
 
 export default function AdminTab() {
     const [user, setUser] = useState({
@@ -36,10 +34,9 @@ export default function AdminTab() {
             <SideBarAdmin user = {user} />
             <Switch>
                 <Route exact path='/users' component={User}></Route>
-                <Route exact path='/lessons' component={Lessons}></Route>
                 <Route path='/viewUser/:id' component={ViewUser}></Route>
                 <Route path='/lesson/:id' component={ViewLesson}></Route>
-                <Route path='/deleteUser/:id' component={DeleteUser}></Route>
+                <Route exact path='/lessons' component={Lessons}></Route>
             </Switch>
         </Router>
             

@@ -38,6 +38,7 @@ export default function Lessons() {
                     <th>Name</th>
                     <th>Video ID</th>
                     <th>Level</th>
+                    <th>Actions</th>
                     </tr>
                 </thead>
                 {
