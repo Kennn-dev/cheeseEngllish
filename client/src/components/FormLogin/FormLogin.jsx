@@ -2,7 +2,6 @@ import React ,{useState}from 'react';
 import { useHistory } from "react-router-dom";
 import {useAlert} from 'react-alert';
 import axios from 'axios';
-
 import { 
   Button, 
   Form, 
@@ -83,27 +82,36 @@ export const FormLogin = () => {
     })
   }
 
- 
   return (
-    <Form 
-      className='mt-5'
-      onSubmit={handleSubmit}
-    >
-    <h1>Login</h1>
-    { form.loading ? 
-      <Spinner color="warning" />
-      : null
-    }
-      <FormGroup >
-        <Label for="exampleEmail">Email</Label>
-        <Input onChange={updateField}  type="email" name="email" id="exampleEmail" value={form.email} placeholder="Email " required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="examplePassword">Password</Label>
-        <Input onChange={updateField} type="password" name="password" id="examplePassword" value={form.password} placeholder="Password" required/>
-      </FormGroup>
-      <Button type='submit'>Submit</Button>
+    <div className="login">
+      <Form 
+        className='mt-5'
+        onSubmit={handleSubmit}
+      >
+        <h1>Login</h1>
+        { form.loading ? 
+          <Spinner color="warning" />
+          : null
+        }
+        <FormGroup >
+          <Label for="exampleEmail">Email</Label>
+          <Input onChange={updateField}  type="email" name="email" id="exampleEmail" value={form.email} placeholder="Email " required />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Password</Label>
+          <Input onChange={updateField} type="password" name="password" id="examplePassword" value={form.password} placeholder="Password" required/>
+        </FormGroup>
+        <Button 
+          type='submit'
+          className='mr-3'
+        >
+          Submit
+        </Button>
       </Form>
+      <div className="fb mt-3">
+      </div>
+    </div>
+         
   );
 }
 

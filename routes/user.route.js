@@ -7,7 +7,8 @@ var router = express.Router();
 //Login
 // router.get('/login',controller.login);
 router.post('/login',controller.checkLogin);
-
+//Login with facebook 
+router.post('/loginFB', controller.loginFacebook)
 //Register
 // router.get('/register',controller.register);
 router.post('/register',controller.postRegister);

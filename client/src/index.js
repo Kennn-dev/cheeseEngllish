@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
+import store from './redux/store';
+import {Provider} from 'react-redux'
 
 const options = {
   // you can also just use 'bottom center'
@@ -16,9 +18,11 @@ const options = {
 }
 ReactDOM.render(
   <React.StrictMode>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>
+    <Provider store = {store}>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

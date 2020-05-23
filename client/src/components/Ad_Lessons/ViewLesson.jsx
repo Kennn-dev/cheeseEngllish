@@ -110,7 +110,18 @@ export default function ViewLesson({match}) {
     const singleQuizClone = {...singleQuiz}
     quizsClone.push(singleQuizClone)
     setQuizs(quizsClone)
-}
+    setSingleQuiz(singleQuizClone)
+    }
+
+    const handleCheckAnswer = (index,answerIndex) => {
+        const quizsClone = [...quizs]
+        //Get value being checked
+        const valueChecked = quizsClone[index].answers[answerIndex]
+        quizsClone[index].correct_Answer = valueChecked
+        // console.log(quizsClone)
+        setQuizs(quizsClone)
+
+    }
 
     const handleSubmit = (e)=>{
         // Format data to POST 
@@ -138,16 +149,6 @@ export default function ViewLesson({match}) {
             
           )
           .catch(err => console.log(err))
-    }
-
-    const handleCheckAnswer = (index,answerIndex) => {
-        const quizsClone = [...quizs]
-        //Get value being checked
-        const valueChecked = quizsClone[index].answers[answerIndex]
-        quizsClone[index].correct_Answer = valueChecked
-        // console.log(quizsClone)
-        setQuizs(quizsClone)
-
     }
 
     /////////////////////////////////////////////////////////////////////////////

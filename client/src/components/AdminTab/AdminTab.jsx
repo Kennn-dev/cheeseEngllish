@@ -12,6 +12,7 @@ import User from '../Ad_User/User'
 import Lessons from '../Ad_Lessons/Lessons'
 import ViewUser from '../Ad_User/ViewUser'
 import ViewLesson from '../Ad_Lessons/ViewLesson'
+import AddLesson from '../Ad_Lessons/AddLesson'
 
 export default function AdminTab() {
     const [user, setUser] = useState({
@@ -37,6 +38,7 @@ export default function AdminTab() {
                 <Route path='/viewUser/:id' component={ViewUser}></Route>
                 <Route path='/lesson/:id' component={ViewLesson}></Route>
                 <Route exact path='/lessons' component={Lessons}></Route>
+                <Route exact path='/addLesson' component={AddLesson}></Route>
             </Switch>
         </Router>
             

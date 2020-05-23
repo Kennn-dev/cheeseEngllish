@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import { BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 
 //components
@@ -8,9 +8,29 @@ import login from './pages/Login/login';
 import register from './pages/Register/register';
 import profile from './pages/Profile/profile';
 import admin from "./pages/Admin/admin";
+
+//Context
+export const ScoreContext = React.createContext()
+
+const initialState = 0 
+const reducer = ( state , action ) =>{
+  switch(action.type) {
+    case 'updateScore' : 
+      return state = action.value
+    default : return state
+  }
+}
+
 function App() {
+  const [ score , dispatch ] = useReducer(reducer , initialState)
   // optional cofiguration
-  return (
+  return (    
+      <ScoreContext.Provider 
+        value ={{
+          scoreState : score,
+          scoreDispatch : dispatch
+        }}
+      >
       <Router>
           <HomeNavbar/>
           <Switch>
@@ -21,6 +41,7 @@ function App() {
             <Route exact path='/admin' component={admin}></Route>
           </Switch>
       </Router>
+      </ScoreContext.Provider>
   );
 }
 

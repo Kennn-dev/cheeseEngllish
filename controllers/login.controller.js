@@ -101,6 +101,36 @@ module.exports.postRegister = (req,res)=>{
         });
     }
 }
+module.exports.loginFacebook = (req,res)=>{
+    const newUser = {
+        name : req.body.name,
+        email : req.body.email
+    }
+    // const newUser = req.body
+    User.findOne({ email : newUser.email})
+    .then(user => {
+        if(!user){
+            User.create(newUser)
+            .then(user => {
+                if(!user) res.json({error : 'Cannot create User'})
+                res.json({success : 'New user created'})
+            })
+            .catch(err => console.log(err))
+        }else{
+            const payload = {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                type : user.type,
+            }
+            let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
+            res.send({token,type: user.type});  
+        }
+    })
+    .catch(err => console.log(err))
+    // console.log(newUser)
+
+}
 // GET profile ======================================================================
 module.exports.getProfile = function(req,res){
     var decoded = jwt.verify(req.headers['authorization'],'keyboard cat');

@@ -31,6 +31,17 @@ export default function Lessons() {
         <div>
             <h2>Lessons List</h2>
             <div className="container">
+                <Button
+                    className='mb-3'
+                    color='success'
+                >
+                    <Link
+                        className='text-light'
+                        to = {`/addLesson`}
+                    >
+                        Add
+                    </Link>
+                </Button>
                 <Table hover>
                 <thead>
                     <tr>

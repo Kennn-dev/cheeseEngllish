@@ -53,11 +53,6 @@ module.exports.deleteUser = function(req,res){
 }
 
 
-
-
-
-
-
 //Lesson ==========================================///////////////////////======================================
 //GET Lessons
 module.exports.getLesson = function(req,res){
@@ -91,7 +86,7 @@ module.exports.viewLesson = function(req,res){
     })
 }
 
-// POST new Lessons
+// POST new Lesson
 module.exports.addNewLesson = function(req,res){ 
     const newLesson = {
         name   : req.body.name,
@@ -101,15 +96,6 @@ module.exports.addNewLesson = function(req,res){
         quizs : []
     };
     const quizs = req.body.quizs;
-    // const newQuiz = [];
-    // quizs.map(quiz => {
-    //     const quizModel = new Quiz();
-    //     quizModel.question = quiz.question;
-    //     quizModel.answer = quiz.answer;
-    //     quizModel.correct_Answer = quiz.correct_Answer;
-    //     newQuiz.push(quizModel);
-        // lesson.save();
-    // })
     Lesson.create(newLesson)
     .then(lesson => {
         if(!lesson) res.json({error : `Can't create Lesson`});

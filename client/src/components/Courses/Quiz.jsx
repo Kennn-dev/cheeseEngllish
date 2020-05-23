@@ -21,6 +21,8 @@ export default function Quiz(props) {
         const result = answers.every(i=> answers_correct.includes(i.value));
         result ? 
         alert.success('Congratulation 💛') 
+        // Update new score here
+        
         :
         alert.error('Check again  😥')
         // console.log('Collect : ',choice)
