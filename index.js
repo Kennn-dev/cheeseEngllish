@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
 
 //database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/web-tieng-anh',
+mongoose.connect( process.env.MONGODB_URI || 'mongodb://localhost/web-tieng-anh',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -135,7 +135,14 @@ app.use('/users', userRoute);
 const adminRoute = require('./routes/adm.route');
 app.use('/admin', adminRoute);
 
-const port = 9000;
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+    app.get('*', (req, res)=>{
+        res.sendFile(path.join(__dirname),'client','build','index.html');
+    });
+}
+
+const port = process.env.port || 9000;
 server.listen(port, ()=>{
     console.log("Server start at port :",port );
 })
