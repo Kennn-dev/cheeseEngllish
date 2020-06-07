@@ -1,5 +1,9 @@
 import React,{useState , useEffect} from 'react';
-import { useAlert} from 'react-alert'
+import { useAlert} from 'react-alert';
+import { useHistory } from "react-router-dom";
+import jwt_decode from 'jwt-decode';
+import axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux'
 import {
     Card, CardBody,Button,
     Breadcrumb,BreadcrumbItem,
@@ -7,25 +11,57 @@ import {
   } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {bonusScore} from '../../Actions/score'
+
 export default function Quiz(props) {
+    let history = useHistory();
     const alert = useAlert();
+    const dispatch = useDispatch();
+    
+    const newScore = useSelector(state => state.score)
+    const [lessonId , setLessonId] = useState(props.idLesson)
+    const [userId, setUserId] = useState('')
+    const [score, setScore] = useState(0)
     const [choice,setChoice] = useState([]);
     const correctArr = [];
     const [correct,setCorrect] = useState([]); 
+
     useEffect(() => {
         setCorrect(correctArr);
+        const token = localStorage.userToken;
+        const decode = jwt_decode(token);
+        setUserId(decode._id)
+        setScore(decode.score)
     }, [])
     const handleSubmit = () =>{
         const answers_correct = [ ... correct];
         const answers = [ ...choice];
         const result = answers.every(i=> answers_correct.includes(i.value));
-        result ? 
-        alert.success('Congratulation 💛') 
-        // Update new score here
-        
-        :
-        alert.error('Check again  😥')
-        // console.log('Collect : ',choice)
+        if(result){
+            // Update new score here
+            const action = bonusScore(score)
+            dispatch(action)
+            // axios post update Score
+            // ...
+            
+            axios.post(`http://localhost:9000/users/updateScore/${userId}`,{score : newScore})
+            .then(res =>
+                    console.log(res.success)
+                )
+            .catch(err => console.log(err))
+            // Update lessons history
+            axios.post(`http://localhost:9000/users/lessonUpdate/${userId}`,{lessonId})
+            .then(res =>
+                    console.log(res),
+                    history.push('/course'),
+                    alert.success('Congratulation 💛')
+                )
+            .catch(err => console.log(err))
+        }else{
+
+            alert.error('Check again  😥')
+            // console.log('Collect : ',choice)
+        }
     }
     const handleOnChange = (e) =>{
         var getData = {

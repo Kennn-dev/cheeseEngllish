@@ -12,25 +12,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 
 
-export default function LessonTag(props) {
+export default function LessonTag({lesson,userLessons}) {
     return (
         <div>
             <Breadcrumb className='lesson-tag'>
-                <BreadcrumbItem >{props.lesson.name} &nbsp;
-                <Badge color="secondary">{props.lesson.level}</Badge>
+                <BreadcrumbItem >{lesson.name} &nbsp;
+                <Badge color="secondary">{lesson.level}</Badge>
                 </BreadcrumbItem>
                 <hr className="my-2" />
-                <Button 
+                
+                {
+                    userLessons.indexOf(lesson._id) !== -1 ?
+                    <Button 
+                    color="success" 
+                    size="sm"
+                    >
+                        <Link 
+                            to={`/learn/${lesson._id}`} 
+                            className='text-light'
+                        >
+                            Learn again
+                        </Link>
+                    </Button>
+                    :
+                    <Button 
                     color="primary" 
                     size="sm"
-                >
-                <Link 
-                    to={`/learn/${props.lesson._id}`} 
-                    className='text-light'
-                >
-                    Learn now
-                </Link>
-                </Button>
+                    >
+                        <Link 
+                            to={`/learn/${lesson._id}`} 
+                            className='text-light'
+                        >
+                            Learn now
+                        </Link>
+                    </Button>
+                }
             </Breadcrumb>
         </div>
     )

@@ -22,6 +22,16 @@ module.exports.getScores = function(req,res){
 // module.exports.login = function(req, res){
 //     res.render("login",{"title": "Login"});
 // }
+//Update User 
+module.exports.updateUser = function(req, res){
+    const id = req.params.id
+    const score = req.body.score
+
+    User.findByIdAndUpdate({_id : id}, { score },(err, user)=>{
+        if(err) console.log(err)
+        if(user) res.json({success : 'Score has been updated'})
+    })
+}
 
 module.exports.checkLogin = function(req,res){
    User.findOne({email: req.body.email})
@@ -37,6 +47,7 @@ module.exports.checkLogin = function(req,res){
                     level: user.level,
                     score: user.score,
                     type : user.type,
+                    lessons : user.lessons
                 }
                 let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
                 res.send({token , type : user.type});
@@ -122,6 +133,7 @@ module.exports.loginFacebook = (req,res)=>{
                 name: user.name,
                 email: user.email,
                 type : user.type,
+                lessons : user.lessons
             }
             let token = jwt.sign(payload,'keyboard cat',{ expiresIn: 1440 });
             res.send({token,type: user.type});  
@@ -179,4 +191,32 @@ module.exports.userLesson = function(req,res){
     })
 
  }
- 
+ // Update user's lessons ======================================================
+ module.exports.updateUserLessons = function(req,res){
+    const id = req.params.id ;
+    const lessonId = req.body.lessonId;
+    
+    // console.log(`Id user : ${id} && Id Lesson : ${lessonId}`)
+    User.findOne({_id : id})
+    .then(user => {
+        
+        // console.log(newArr)
+        if(user){
+            let newArr = [ ...user.lessons]
+            newArr.includes(lessonId) === true ?
+            null
+            :
+            newArr.push(lessonId)
+            User.updateOne({_id : id},{ lessons : newArr},function(err, res){
+                if(err) console.log(err)
+                console.log(res)
+            })
+            // console.log(newArr)
+            
+        }else{
+            res.json({error : 'Error'})
+        }
+    })
+    .catch(err => console.log(err))
+    // 
+ }

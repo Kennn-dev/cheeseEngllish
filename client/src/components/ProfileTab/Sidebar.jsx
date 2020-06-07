@@ -10,9 +10,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText
+  NavbarText,
+  Button
 } from 'reactstrap';
-import Translate from '../TranslateInput/TranslateInput'
 
 export default function Sidebar(props) {
         const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Sidebar(props) {
         <div>
         <Navbar color="light" light expand="md">
             <NavbarBrand>
-                <Link to='/profile'>{props.user.name}</Link>
+                <Link to='/profile'><h2>{props.user.name}</h2></Link>
             </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
@@ -33,17 +33,17 @@ export default function Sidebar(props) {
                 </NavItem>
                 <NavItem>
                     <NavLink>
+                        <Link to='/profile'>Profile</Link>
+                    </NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink>
                         <Link to={`/chat?&name=${props.user.name}&room=General`}>Chat</Link>
                     </NavLink>
                 </NavItem>
             </Nav>
-            <NavItem>
-                <NavbarText>{props.user.level}</NavbarText>
-            </NavItem>
-            <NavItem>
-                <NavbarText>{props.user.score}</NavbarText>
-            </NavItem>
-            <Translate/>       
+                <NavbarText>Level : <Button>{props.user.level}</Button> &nbsp;</NavbarText>
+                <NavbarText>Score : {props.score}</NavbarText>       
             </Collapse>
         </Navbar>
         </div>

@@ -96,18 +96,21 @@ module.exports.addNewLesson = function(req,res){
         quizs : []
     };
     const quizs = req.body.quizs;
+    quizs.map(quiz => {
+        const quizModel = new Quiz();
+        quizModel.question = quiz.question;
+        quizModel.answers = quiz.answers;
+        quizModel.correct_Answer = quiz.correct_Answer;
+        // lesson.quizs.push(quizModel)
+        newLesson.quizs.push(quizModel)
+    })
+    // console.log(newLesson);
     Lesson.create(newLesson)
     .then(lesson => {
         if(!lesson) res.json({error : `Can't create Lesson`});
         // lesson.quizs = newQuiz
-        quizs.map(quiz => {
-            const quizModel = new Quiz();
-            quizModel.question = quiz.question;
-            quizModel.answer = quiz.answer;
-            quizModel.correct_Answer = quiz.correct_Answer;
-            lesson.quizs.push(quizModel);
-            lesson.save(); // Bugged 
-        })
+        
+        // lesson.save(); // Bugged 
         res.json({success : 'New lesson is created !'})
     })
     .catch(err => res.json({error : err}))

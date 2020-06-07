@@ -1,0 +1,247 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 991px)
+{
+    .logo{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .sign-btn {
+        width:100% !important;
+    }
+}
+body{
+    font-family: 'Cabin', sans-serif !important;
+}
+.custom-nav{
+    background-color: white;
+    z-index: 3;
+}
+
+.nav-item a{
+    color: #333;
+    font-family: 'Cabin', sans-serif;
+    font-size: 18px;
+}
+.sign-btn{ 
+    padding: 5px 0;
+    width: 100px;
+    max-width:1000px;
+    font-weight: bold;
+    background-color: #FFCF1F;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+.sign-btn a{
+    color: black;
+}
+
+
+.page1{
+    padding: 5em 0;
+}
+.introduce-text h2{
+    color: #FFCF1F;
+}
+.set-img{
+    max-width: 600px;
+    max-height: 400px;
+}
+.form-layout{
+    margin:10px;
+    background-color: #e5e5e5;
+    width: 80%;
+    height: 100%;
+    border-radius: 15px;
+}
+.form-layout button{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #FFCF1F;
+
+}
+.footer{
+    background-color: #212529;
+    height: 80px;
+}
+.footer .wrap{
+    width: 100%;
+}
+.des p{
+    color: #e5e5e5;
+}
+.circle{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    background-color: #ffcf1f91;
+    border-radius: 100%;
+    top: 40%;
+    right: 80%;
+    position: fixed;
+}
+.circle2{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: #ffcf1f91;
+    border-radius: 100%;
+    top: 55%;
+    left: 85%;
+    position: fixed;
+}
+.form-control{
+    border-color: #ffcf1f !important;
+}
+
+#navbar{
+    box-shadow: 0px 15px 5px -8px rgba(0,0,0,0.08);
+}
+
+/* Profile page */
+.avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.input-group input{
+    border: none;
+    background-color: transparent;
+}
+.input-group input:focus, select:focus, textarea:focus, button:focus{
+    outline: none;
+    box-shadow:none;
+}
+.input-group{
+    border: 1px solid #ffcf1f ;
+    border-radius: 15px;
+    padding: 5px 10px;
+    background-color: white;
+}
+.profile{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
+    background-color: #f8f9fa6e;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+.profile-2{
+    box-shadow: -10px 10px 5px -2px rgba(0,0,0,0.15);
+    background-color: #f8f9fa6e;
+    height: 100%;
+    width: 80%;
+    border-radius: 20px;
+}
+.avatar-main{
+    width: 200px;
+    height: 200px;
+}
+.out-btn{
+    background-color: #ffcf1f !important ;
+    width: 100%;
+}
+
+/* ============================== Lesson page ====================================*/
+.list-lesson{
+    height: 100%;
+    background-color: #f8f9fa6e;
+    width: 100%;
+    border-radius: 15px;
+    padding: 20px 20px;
+}
+.lesson-tag{
+    
+    border-radius: 20px;
+    height: 100px ;
+    background-color: #6c757d1c ;
+}
+.pag .page-item .page-link{
+    color: #333;
+    border: 1px solid #FFCF1F;
+}
+.pag .page-item.active .page-link{
+    color: #333;
+    background-color: #FFCF1F;
+    border: 1px solid #ffcf1f;
+}
+.fill-icons{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FFCF1F;
+    position: relative;
+}
+.fill-icons i{
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    transform: translate(-35% -30%);
+}
+.fill-icons:hover{
+    border: 3px solid #ffcf1f;
+    background-color: white ;
+}
+.active-ls{
+    border: 3px solid #ffcf1f;
+    background-color: white ;
+}
+/* ====================================================================== */
+.active-modal{
+    display: block !important;
+}
+.popup-lesson{
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    transform: translate(-5%, -5%);
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    box-shadow: 0px 0px 30px -5px rgba(0,0,0,0.45); 
+    z-index: 9999;
+    border-radius: 20px;
+    border: 2px solid #FFCF1F;
+}
+.popup-lesson{
+    overflow: auto;
+}
+.header-popup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px; 
+}
+.header-popup h1{
+   padding-top: 10px;
+}
+.header::after{
+    content: '';
+    height: 1px;
+    width: 95%;
+    background-color: #00000024;
+    display: block;
+    margin: auto;
+}
+/*  */
+.script{
+    width: 100%;
+    padding: 20px ;
+    border: 1px #FFCF1F solid;
+}
+.quiz{
+    
+    height: 100%;
+    padding: 20px ;
+    /*border: 1px #FFCF1F solid ; */
+}

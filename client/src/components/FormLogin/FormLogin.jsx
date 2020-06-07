@@ -12,8 +12,11 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {userLogin} from '../../Actions/user'
+import { useDispatch } from 'react-redux';
 
 export const FormLogin = () => {
+  const dispatch = useDispatch();
   const alert = useAlert();
   let history = useHistory();
   const [form, setForm] = useState({
@@ -28,6 +31,8 @@ export const FormLogin = () => {
       [e.target.name] : e.target.value
     })
   }
+
+
 
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -57,6 +62,8 @@ export const FormLogin = () => {
            ...form,
            loading: false
          })
+         const action = userLogin();
+         dispatch(action);
          localStorage.clear();
          localStorage.setItem('userToken',useData.token);
          alert.success('Login success !');

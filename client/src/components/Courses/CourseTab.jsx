@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import jwt_decode from 'jwt-decode';
 
 import LessonTag from './LessonTag';
 import ScoreBoard from '../ScoreBoard/ScoreBroad';
@@ -17,6 +18,7 @@ export default function CourseTab() {
     const url1 = 'http://localhost:9000/users/lesson';
     const url2 = 'http://localhost:9000/users/scores';
 
+    const [userLessons, setUserLessons] = useState()
     useEffect(() => {
         async function getScores(){
             const response = await fetch(url2);
@@ -24,6 +26,10 @@ export default function CourseTab() {
             setScores(responseJSON)
         }
         getScores();
+        const token = localStorage.userToken;
+        const decode = jwt_decode(token);
+        // console.log(decode);
+        setUserLessons(decode.lessons)
     }, [])
 
     useEffect(()=>{
@@ -34,7 +40,7 @@ export default function CourseTab() {
             setLessons(responseJSON.result)
         }
         getData();
-    },[])
+    },[lessons])
 
     return (
         <div className="row container-fluid mt-3">
@@ -52,7 +58,11 @@ export default function CourseTab() {
                     {   
                          
                         lessons.map((lesson,index) =>{
-                            return <LessonTag key={index} lesson={lesson} />
+                            return <LessonTag 
+                                key={index} 
+                                lesson={lesson}
+                                userLessons = {userLessons}
+                            />
                         })
                     }
                     </div>  

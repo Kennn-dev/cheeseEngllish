@@ -45,7 +45,10 @@ export default function LessonInfo({match}) {
                     {
                         loading ? <Spinner color="warning" /> :
                         <div className="col-6">
-                            <Quiz  lesson={lessonData}/>
+                            <Quiz  
+                                lesson={lessonData}
+                                idLesson = {id}
+                            />
                         </div>
                     }
                      
