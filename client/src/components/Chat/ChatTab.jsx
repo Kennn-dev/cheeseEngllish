@@ -15,6 +15,7 @@ export default function ChatTab({location}) {
     const [roomList, setRoomList] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    const [chats, setChats] = useState([]);
     const url = 'http://localhost:9000';
 
     const sendMessage = (e)=>{
@@ -40,11 +41,21 @@ export default function ChatTab({location}) {
         }))
     }, [messages])
     
+    useEffect(() => {
+        async function getChats(){
+            const res = await fetch('http://localhost:9000/users/chats')
+            const resJSON = await res.json();
+            setChats(resJSON.result)
+        }
+
+        getChats();
+    }, [])
+
     return (
         <div>
             <h1>Chat</h1>
             <div className="d-flex">
-                <div className="col-6 container">
+                <div className="col-4 container">
                 <ul class="list-group">
                 <li class="list-group-item active"><h4>Current users :</h4></li>
                     {
@@ -54,8 +65,8 @@ export default function ChatTab({location}) {
                     }
                 </ul>
                 </div>
-                <div className="col-6">
-                    <ChatBox messages ={messages} name={name}/>
+                <div className="col-8">
+                    <ChatBox chats = {chats} messages ={messages} name={name}/>
                     <div className="container input-group mb-3">
                     <input 
                         type="text" 

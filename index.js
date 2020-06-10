@@ -11,7 +11,7 @@ const socketio = require('socket.io');
 const translate = require('google-translate-api');
 
 //chat Model 
-// const Chat = require('./models/chat');
+const Chat = require('./models/chat');
 //server Socket
 const server = http.createServer(app);
 const io = socketio(server);
@@ -40,16 +40,24 @@ io.on('connection', (socket) => {
         
     }))
     socket.on('sendMessage', (data)=>{
-        console.log(data);
+        // console.log(data);
         io.sockets.emit(
             'otherMessage',
             packageMessenge(data.name, data.message, data.createAt)
-            );
-
-            console.log(
-                packageMessenge(data.name, data.message,data.createAt)
-                
-            )
+        );
+        //Save to database
+        const date = new Date().getTime();
+        const newChat = {
+            name : data.name,
+            message : data.message,
+            createAt : moment(date).format('LT')
+        }
+        Chat.create(newChat)
+        .then(chat => {
+            if(chat) console.log({success : 'Created success !'})
+            else  console.log({error : 'Create failed !'})
+        })
+        .catch(err => console.log(err))
     })
     socket.on('disconnect', (name) => {
         listUser.splice(name,1);

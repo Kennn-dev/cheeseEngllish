@@ -12,8 +12,8 @@ let chatSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    dateSend: {
-        type: Date,
+    createAt: {
+        type: String,
         default : Date.now
     }
     

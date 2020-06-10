@@ -10,6 +10,69 @@ export default function ChatBox(props) {
             <div className="container-fluid custom-height">
                 <div className="container light-bg">
                     {
+                        props.chats.map(chat => 
+                        {
+                            return(
+                                chat.name === props.name ?
+// ------------------------------------------------------ self
+                                <div className="">
+                                    <p 
+                                        className='mb-0 d-flex justify-content-end'
+                                        style={{
+                                            fontSize: '12px'
+                                        }}
+                                    >{chat.name}</p>
+                                    <div className="d-flex justify-content-end">
+                                        <div className="mb-3 mr-3 d-flex align-items-center"
+                                                style={{
+                                                    color:'#6c757d'
+                                                }}
+                                            >
+                                                {chat.createAt}
+                                        </div>
+                                        <div className="
+                                            alert 
+                                            alert-warning 
+                                        " 
+                                        role="alert"
+                                        >
+                                            {chat.message}
+                                        </div>
+                                    </div>
+                                    </div>
+                                :
+// =============================================== Other                                
+                                <div className="" >
+                                    <p 
+                                        className='mb-0'
+                                        style={{
+                                            fontSize: '12px'
+                                        }}
+                                    >{chat.name}</p>
+                                    <div className="d-flex justify-content-start">
+                                        <div className="
+                                            alert 
+                                            alert-light 
+                                            allchat
+                                        "
+                                        role="alert"
+                                        >
+                                            {chat.message}
+                                        </div>
+                                        <div className="mb-3 ml-3 d-flex align-items-center"
+                                            style={{
+                                                color:'#6c757d'
+                                            }}
+                                        >
+                                            {chat.createAt}
+                                        </div> 
+                                    </div>     
+                                </div>
+                            )
+                            
+                        })
+                    }
+                    {
                         //props
                         props.messages.map( message => 
                             {
@@ -70,6 +133,7 @@ export default function ChatBox(props) {
                                     </div>
                                     </div>
                                 :
+// =============================================== Other                                
                                 <div className="" >
                                     <p 
                                         className='mb-0'
@@ -100,7 +164,6 @@ export default function ChatBox(props) {
                             
                         )
                     }
-                    
                 </div>
             </div>
         </div>

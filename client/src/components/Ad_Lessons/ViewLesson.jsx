@@ -142,7 +142,7 @@ export default function ViewLesson({match}) {
                 let x = res.data ;
                 if(x.success){
                     alert.success(x.success)
-                    history.push('/users')
+                    history.push('/lessons')
                 }else{alert.error(x.error)}
                 
             }

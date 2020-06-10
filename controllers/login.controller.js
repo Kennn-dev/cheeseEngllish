@@ -4,6 +4,7 @@ const translate = require('google-translate-api');
 //model
 let User = require('../models/user');
 let Lesson = require('../models/lesson');
+let Chat = require('../models/chat');
 const jwt = require('jsonwebtoken');
 
 // get ALL SCORES
@@ -22,7 +23,7 @@ module.exports.getScores = function(req,res){
 // module.exports.login = function(req, res){
 //     res.render("login",{"title": "Login"});
 // }
-//Update User 
+//Update User 's Scores
 module.exports.updateUser = function(req, res){
     const id = req.params.id
     const score = req.body.score
@@ -219,4 +220,18 @@ module.exports.userLesson = function(req,res){
     })
     .catch(err => console.log(err))
     // 
+ }
+ // Get chats data
+ module.exports.getChatData = function(req, res){
+    Chat.find({})
+    .then(chat =>{
+        if(!chat){
+            res.json({error : 'Cannot get chats'});
+        }else{
+            res.json({result : chat});
+        }
+    })
+    .catch(err =>{
+        res.json({error : err});
+    })
  }

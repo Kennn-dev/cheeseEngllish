@@ -76,6 +76,8 @@ export const FormLogin = () => {
            ...form,
            loading: false
          })
+         const action = userLogin();
+         dispatch(action);
          localStorage.clear();
          localStorage.setItem('adminToken',useData.token);
          alert.success('Login success !');

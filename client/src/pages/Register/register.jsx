@@ -1,11 +1,16 @@
 import React from 'react'
 import {FormRegister} from '../../components/FormRegister/FormRegister'
+import './styles.css'
 
 export default function register() {
     return (
         <div>
-            <h1>Register page</h1>
-            <FormRegister/>
+             <div className="bg-img">
+                {/* <img src="../img/cheeseBackground.jpg" alt="img"/> */}
+            </div>
+            <div className="container mb-5">
+                <FormRegister/>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,5 @@
+.bg-img{
+    background-image: url('../../img/cheeseBackground.jpg');
+    width: 100%;
+    height: 200px;
+}

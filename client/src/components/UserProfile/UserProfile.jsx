@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, FormGroup , Input , Label} from 'reactstrap'
 import { useSelector } from 'react-redux'
 
+
 export default function UserProfile() {
     const score = useSelector(state => state.score)
     return (
@@ -57,7 +58,7 @@ export default function UserProfile() {
                         </div>
                     </div>
                     <div class=" col-lg-6 col-sm-12">
-                        <img src="../img/undraw_going_offline_ihag.svg" className='img-fluid' alt="img"/>
+                        <img src="../../img/undraw_collaborating_g8k8.svg" className='img-fluid' alt="img"/>
                     </div>
                 </div>
             </div>

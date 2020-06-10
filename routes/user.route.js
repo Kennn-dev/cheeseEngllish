@@ -28,5 +28,7 @@ router.get('/learn/:id',controller.singleLesson);
 router.post('/lessonUpdate/:id', controller.updateUserLessons);
 //GET Scores 
 router.get('/scores',controller.getScores);
+//GET chats
+router.get('/chats', controller.getChatData);
 
 module.exports = router;
